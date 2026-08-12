@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>핫딜 줍줍 🔥 오늘의 핫딜 모아보기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">HOT</span>
+      <h1>핫딜 줍줍<span class="fire">🔥</span></h1>
+    </div>
+    <p class="tagline">쿠팡 · 토스 핫딜을 한 장의 영수증처럼 모았어요</p>
+  </div>
+  <div class="header-barcode" aria-hidden="true"></div>
+</header>
+
+<main>
+
+  <section class="alert-banner" id="alertBanner">
+    <div class="alert-inner">
+      <span class="alert-icon">🔔</span>
+      <span class="alert-text">놓치면 품절! 실시간 알림 받기</span>
+      <button class="alert-btn" id="alertBtn">알림 신청</button>
+    </div>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="핫딜 소스 선택">
+    <button class="tab active" data-source="쿠팡" role="tab" aria-selected="true">쿠팡</button>
+    <button class="tab" data-source="토스쇼핑" role="tab" aria-selected="false">토스쇼핑</button>
+    <button class="tab" data-source="토스BEST50" role="tab" aria-selected="false">토스 BEST50</button>
+  </nav>
+
+  <ul class="disclaimer">
+    <li>이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</li>
+    <li>와우회원 카드할인/쿠폰적용가 기준입니다.</li>
+    <li>품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요.</li>
+  </ul>
+
+  <div class="status-row">
+    <span id="liveDot" class="live-dot"></span>
+    <span id="statusText">실시간으로 업데이트 중 · 지난 핫딜은 자동으로 사라져요</span>
+    <button id="simulateBtn" class="simulate-btn">+ 새 핫딜 시뮬레이션</button>
+  </div>
+
+  <section class="deal-grid" id="dealGrid" aria-live="polite"></section>
+
+  <p class="empty-state" id="emptyState" hidden>
+    지금 이 카테고리엔 살아있는 핫딜이 없어요.<br>새 핫딜이 뜨면 바로 채워드릴게요 🫡
+  </p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-barcode" aria-hidden="true"></div>
+  <p>핫딜 줍줍은 자동 수집 봇이 쿠팡·토스 특가를 모아 보여주는 정보성 사이트입니다.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

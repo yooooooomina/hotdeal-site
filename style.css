@@ -1,0 +1,426 @@
+/* =========================================================
+   핫딜 줍줍 — "영수증" 컨셉
+   paper: #F2EFE4 / ink: #211E1A / hot-red: #E5372A
+   marker-yellow: #FFC93D / toss-blue: #1B64F2 / meta-gray: #8C8778
+   ========================================================= */
+
+:root{
+  --paper: #F2EFE4;
+  --paper-deep: #E9E4D4;
+  --ink: #211E1A;
+  --ink-soft: #4A453C;
+  --meta: #8C8778;
+  --hot: #E5372A;
+  --hot-deep: #C22C21;
+  --marker: #FFC93D;
+  --toss: #1B64F2;
+  --line: rgba(33,30,26,0.14);
+  --card: #FCFAF3;
+  --radius: 2px;
+}
+
+*{ box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+html{ background: var(--paper); }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(33,30,26,0.05) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+  color: var(--ink);
+  font-family: "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- ticking headline strip ---------- */
+.ticker{
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 6px 0;
+}
+.ticker-track{
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 32s linear infinite;
+}
+@keyframes scroll-left{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-100%); }
+}
+
+/* ---------- header ---------- */
+.site-header{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 20px 0;
+  text-align: center;
+  position: relative;
+}
+.brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.brand-mark{
+  background: var(--hot);
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 4px 7px;
+  transform: rotate(-3deg);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.brand h1{
+  font-family: "Black Han Sans", sans-serif;
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  margin: 0;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.brand .fire{ font-size: 0.7em; margin-left: 2px; }
+.tagline{
+  margin: 8px 0 20px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+.header-barcode{
+  height: 22px;
+  margin-top: 6px;
+  background-image: repeating-linear-gradient(
+    90deg, var(--ink) 0 2px, transparent 2px 5px,
+    var(--ink) 5px 6px, transparent 6px 11px,
+    var(--ink) 11px 14px, transparent 14px 17px
+  );
+  opacity: 0.85;
+}
+
+main{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* ---------- alert banner ---------- */
+.alert-banner{
+  margin-top: 22px;
+  background: var(--marker);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 12px 16px;
+}
+.alert-inner{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 700;
+}
+.alert-icon{ font-size: 1.1rem; }
+.alert-text{ font-size: 0.95rem; }
+.alert-btn{
+  margin-left: auto;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 8px 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.alert-btn:hover{ background: var(--hot-deep); }
+.alert-btn:active{ transform: scale(0.96); }
+.alert-btn:focus-visible, .tab:focus-visible, .simulate-btn:focus-visible{
+  outline: 3px solid var(--toss);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px){
+  .alert-btn{ margin-left: 0; width: 100%; }
+}
+
+/* ---------- tabs ---------- */
+.tabs{
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  border-bottom: 2px solid var(--ink);
+}
+.tab{
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-size: 0.86rem;
+  background: transparent;
+  border: none;
+  padding: 10px 4px 12px;
+  color: var(--meta);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease;
+}
+.tab + .tab{ margin-left: 6px; }
+.tab::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 3px;
+  background: var(--hot);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
+}
+.tab:hover{ color: var(--ink); }
+.tab.active{ color: var(--ink); }
+.tab.active::after{ transform: scaleX(1); }
+
+/* ---------- disclaimer ---------- */
+.disclaimer{
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  background: var(--paper-deep);
+  border-left: 3px solid var(--meta);
+  font-size: 0.74rem;
+  color: var(--meta);
+  line-height: 1.6;
+}
+.disclaimer li::before{ content: "· "; }
+
+/* ---------- status row ---------- */
+.status-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 2px 6px;
+  font-size: 0.78rem;
+  color: var(--meta);
+  flex-wrap: wrap;
+}
+.live-dot{
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--hot);
+  box-shadow: 0 0 0 0 rgba(229,55,42,0.5);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse{
+  0%{ box-shadow: 0 0 0 0 rgba(229,55,42,0.45); }
+  70%{ box-shadow: 0 0 0 7px rgba(229,55,42,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(229,55,42,0); }
+}
+.simulate-btn{
+  margin-left: auto;
+  background: none;
+  border: 1.5px dashed var(--ink-soft);
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.simulate-btn:hover{ background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---------- deal grid ---------- */
+.deal-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (max-width: 520px){
+  .deal-grid{ grid-template-columns: 1fr; }
+}
+
+.deal-card{
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  position: relative;
+  padding-bottom: 10px;
+  animation: rise 0.35s ease both;
+  box-shadow: 3px 3px 0 rgba(33,30,26,0.9);
+}
+@keyframes rise{
+  from{ opacity: 0; transform: translateY(10px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+.deal-card.removing{
+  animation: fade-out 0.4s ease forwards;
+}
+@keyframes fade-out{
+  to{ opacity: 0; transform: scale(0.94); }
+}
+
+/* zigzag "torn ticket" top edge */
+.deal-card::before{
+  content: "";
+  display: block;
+  height: 8px;
+  background:
+    linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/8px 8px,
+    linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0/8px 8px;
+  background-repeat: repeat-x;
+}
+
+.source-flag{
+  position: absolute;
+  top: 8px; left: -6px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 3px 8px 3px 10px;
+  color: #fff;
+  letter-spacing: 0.03em;
+  z-index: 2;
+}
+.source-flag::after{
+  content: "";
+  position: absolute;
+  right: -7px; top: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 7px;
+}
+.source-flag.src-쿠팡{ background: var(--hot); }
+.source-flag.src-쿠팡::after{ border-color: transparent transparent transparent var(--hot); }
+.source-flag.src-토스쇼핑, .source-flag.src-토스BEST50{ background: var(--toss); }
+.source-flag.src-토스쇼핑::after, .source-flag.src-토스BEST50::after{ border-color: transparent transparent transparent var(--toss); }
+
+.deal-thumb{
+  height: 128px;
+  margin: 6px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  background: var(--paper-deep);
+  border: 1px dashed var(--line);
+}
+
+.deal-body{ padding: 10px 12px 0; }
+
+.deal-name{
+  font-size: 0.85rem;
+  line-height: 1.35;
+  min-height: 2.7em;
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.price-row{
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: "IBM Plex Mono", monospace;
+}
+.price-orig{
+  font-size: 0.72rem;
+  color: var(--meta);
+  text-decoration: line-through;
+}
+.price-now{
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.discount{
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--hot);
+}
+
+.meta-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.68rem;
+  color: var(--meta);
+  font-family: "IBM Plex Mono", monospace;
+}
+.card-barcode{
+  height: 14px;
+  margin: 8px 12px 0;
+  background-image: repeating-linear-gradient(
+    90deg, var(--ink) 0 1.5px, transparent 1.5px 3.5px,
+    var(--ink) 3.5px 4.5px, transparent 4.5px 8px
+  );
+  opacity: 0.75;
+}
+
+.deal-card.new-badge .source-flag::before{
+  content: "NEW · ";
+}
+
+/* ---------- empty state ---------- */
+.empty-state{
+  text-align: center;
+  color: var(--meta);
+  padding: 60px 20px;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+/* ---------- footer ---------- */
+.site-footer{
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 0 20px 30px;
+  text-align: center;
+}
+.footer-barcode{
+  height: 16px;
+  margin-bottom: 14px;
+  background-image: repeating-linear-gradient(
+    90deg, var(--ink) 0 2px, transparent 2px 5px,
+    var(--ink) 5px 6px, transparent 6px 11px
+  );
+  opacity: 0.5;
+}
+.site-footer p{
+  font-size: 0.72rem;
+  color: var(--meta);
+}
+
+/* ---------- toast ---------- */
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 50;
+  box-shadow: 3px 3px 0 var(--hot);
+}
+.toast.show{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
