@@ -1,1 +1,35 @@
+name: 핫딜 자동 업데이트
 
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-deals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 쿠팡 핫딜 수집 스크립트 실행
+        env:
+          COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
+          COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+        run: node scripts/fetch-deals.mjs
+
+      - name: 변경사항 자동 커밋 & 푸시
+        run: |
+          git config user.name "hotdeal-bot"
+          git config user.email "actions@github.com"
+          git add data/deals-coupang.json data/price-history.json
+          git diff --cached --quiet || git commit -m "🔥 핫딜 자동 업데이트 $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
