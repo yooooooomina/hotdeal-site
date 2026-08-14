@@ -1,6 +1,7 @@
 // =========================================================
-// 쿠팡파트너스 오픈API로 가격을 주기적으로 수집해서
-// "예전보다 확 싸진 상품"만 핫딜로 자동 등록하는 스크립트.
+// 쿠팡파트너스 오픈API로 가격을 주기적으로 기록해두고,
+// "예전 가격 대비 제일 많이 할인된 상품"이 맨 위에 오도록
+// 자동으로 핫딜 목록을 만드는 스크립트.
 //
 // 실행: node scripts/fetch-deals.mjs
 // 필요한 환경변수:
@@ -9,6 +10,15 @@
 //
 // GitHub Actions에서는 이 값들을 절대 코드에 직접 쓰지 말고
 // Settings > Secrets and variables > Actions 에 등록해서 사용하세요.
+//
+// 동작 방식:
+//  1. keywords.json에 있는 각 키워드로 상품을 검색
+//  2. 검색된 모든 상품의 "현재 가격"을 price-history.json에 계속 쌓아둠
+//     (쿠팡 검색API는 정가/할인율을 따로 안 줘서, 우리가 직접 시간별로
+//      가격을 관찰해서 "예전보다 싸졌다"를 판단해야 해요)
+//  3. 기록이 2번 이상 쌓인 상품 중에서, 예전 최고가 대비 지금 가격이
+//     MIN_DISCOUNT 이상 떨어진 상품만 골라냄
+//  4. 할인율이 높은 순서로 정렬 → 제일 많이 할인된 상품이 맨 위로
 // =========================================================
 
 import { createHmac } from "node:crypto";
@@ -21,9 +31,10 @@ const SUB_ID = process.env.COUPANG_SUB_ID || "hotdealsite"; // 파트너스 채�
 const DOMAIN = "https://api-gateway.coupang.com";
 const SEARCH_PATH = "/v2/providers/affiliate_open_api/apis/openapi/products/search";
 
-const DISCOUNT_THRESHOLD = 0.15;   // 15% 이상 떨어지면 "핫딜"로 판정
+const SEARCH_LIMIT = 30;           // 키워드당 검색해서 가격을 기록해둘 상품 개수
+const MIN_DISCOUNT = 0.35;         // 이 비율(35%) 이상 떨어진 상품만 핫딜 후보로 인정
 const HISTORY_KEEP = 10;           // 상품별로 최근 몇 개의 가격 기록을 남길지
-const DEAL_EXPIRY_HOURS = 48;      // 이 시간이 지나면 핫딜 목록에서 자동 제외
+const DEAL_EXPIRY_HOURS = 48;      // 마지막 관측 후 이 시간이 지나면 목록에서 자동 제외
 const REQUEST_DELAY_MS = 700;      // 요청 사이 대기 시간 (API 과호출 방지)
 
 const KEYWORDS_FILE = new URL("../data/keywords.json", import.meta.url);
@@ -59,7 +70,7 @@ function buildAuthHeader(method, pathWithQuery) {
 }
 
 async function searchProducts(keyword) {
-  const query = `keyword=${encodeURIComponent(keyword)}&limit=20&subId=${encodeURIComponent(SUB_ID)}`;
+  const query = `keyword=${encodeURIComponent(keyword)}&limit=${SEARCH_LIMIT}&subId=${encodeURIComponent(SUB_ID)}`;
   const pathWithQuery = `${SEARCH_PATH}?${query}`;
   const url = DOMAIN + pathWithQuery;
 
@@ -113,12 +124,15 @@ async function main() {
         image: p.productImage,
         url: p.productUrl,
         isRocket: !!p.isRocket,
+        keyword,
         records: [],
       };
 
       entry.name = p.productName;
       entry.image = p.productImage;
       entry.url = p.productUrl;
+      entry.isRocket = !!p.isRocket;
+      entry.keyword = keyword;
       entry.records.push({ price: p.productPrice, at: now });
       entry.records = entry.records.slice(-HISTORY_KEEP);
 
@@ -131,40 +145,45 @@ async function main() {
   await writeFile(HISTORY_FILE, JSON.stringify(history, null, 2), "utf-8");
   console.log(`💾 가격 기록 저장 완료 (${Object.keys(history).length}개 상품)`);
 
-  // ---- 핫딜 판정 ----
-  const deals = [];
+  // ---- 할인율 계산해서 핫딜 후보 뽑기 ----
+  const candidates = [];
 
   for (const [id, entry] of Object.entries(history)) {
     const records = entry.records;
-    if (records.length < 2) continue; // 비교할 이전 기록이 없으면 패스
+    if (records.length < 2) continue; // 비교할 예전 기록이 없으면 패스
 
     const latest = records[records.length - 1];
-    const isExpired = now - latest.at > DEAL_EXPIRY_HOURS * 3600 * 1000;
-    if (isExpired) continue; // 최근에 관측 안 된 상품은 제외
+    const isStale = now - latest.at > DEAL_EXPIRY_HOURS * 3600 * 1000;
+    if (isStale) continue; // 최근에 관측 안 된 상품은 제외
 
     const priorMax = Math.max(...records.slice(0, -1).map((r) => r.price));
     if (priorMax <= 0) continue;
 
-    const dropRatio = (priorMax - latest.price) / priorMax;
-    if (dropRatio >= DISCOUNT_THRESHOLD) {
-      deals.push({
+    const discountRatio = (priorMax - latest.price) / priorMax;
+    if (discountRatio >= MIN_DISCOUNT) {
+      candidates.push({
         id,
         name: entry.name,
         price: latest.price,
-        discount: Math.round(dropRatio * 100),
+        discount: Math.round(discountRatio * 100),
         source: "쿠팡",
         image: entry.image,
         link: entry.url,
         isRocket: entry.isRocket,
+        keyword: entry.keyword,
         postedAt: new Date(latest.at).toISOString(),
       });
     }
   }
 
-  deals.sort((a, b) => b.discount - a.discount);
+  // 할인율 높은 순으로 정렬 → 제일 많이 할인된 상품이 맨 위
+  candidates.sort((a, b) => b.discount - a.discount);
 
-  await writeFile(OUTPUT_FILE, JSON.stringify(deals, null, 2), "utf-8");
-  console.log(`🔥 핫딜 ${deals.length}건을 deals-coupang.json에 기록했습니다.`);
+  await writeFile(OUTPUT_FILE, JSON.stringify(candidates, null, 2), "utf-8");
+  console.log(`🔥 할인 상품 ${candidates.length}건을 deals-coupang.json에 기록했습니다 (할인율 높은 순).`);
+  if (candidates[0]) {
+    console.log(`   1위: ${candidates[0].name} — ${candidates[0].discount}% ↓`);
+  }
 }
 
 main().catch((err) => {
