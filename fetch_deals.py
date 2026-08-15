@@ -30,7 +30,7 @@ def fetch_coupang_goldbox():
     secret_key = os.environ.get('COUPANG_SECRET_KEY')
     
     if not access_key or not secret_key:
-        print("⚠️ 쿠팡 API Key가 설정되지 않았습니다.")
+        print("⚠️ [쿠팡] API Key가 설정되지 않았습니다.")
         return []
 
     domain = "https://api-gateway.coupang.com"
@@ -65,16 +65,16 @@ def fetch_coupang_goldbox():
                     "originalPrice": f"{orig_price:,}원" if orig_price else "",
                     "discountRate": discount_rate,
                     "imageUrl": item.get('productImage'),
-                    "link": item.get('productUrl'), # 내 수익 링크
+                    "link": item.get('productUrl'),
                     "createdAt": datetime.now(KST).isoformat()
                 })
-            print(f"✅ 쿠팡 골드박스 {len(coupang_items)}개 수집 완료!")
+            print(f"✅ [쿠팡] 골드박스 상품 {len(coupang_items)}개 수집 완료!")
             return coupang_items
         else:
-            print(f"❌ 쿠팡 API 호출 실패 (코드: {response.status_code})")
+            print(f"❌ [쿠팡] API 호출 실패 (코드: {response.status_code})")
             return []
     except Exception as e:
-        print(f"❌ 쿠팡 수집 에러: {e}")
+        print(f"❌ [쿠팡] 수집 에러: {e}")
         return []
 
 # ==========================================
@@ -83,7 +83,6 @@ def fetch_coupang_goldbox():
 BASE_TOSS_URL = "https://sharelink-api.toss.im"
 
 def get_toss_access_token(access_key, secret_key):
-    """토스 Open API 액세스 토큰 발급"""
     try:
         url = f"{BASE_TOSS_URL}/openapi/auth/token"
         payload = {
@@ -92,33 +91,24 @@ def get_toss_access_token(access_key, secret_key):
         }
         res = requests.post(url, json=payload, timeout=10)
         if res.status_code == 200:
-            return res.json().get('data', {}).get('accessToken')
+            res_data = res.json()
+            token = res_data.get('data', {}).get('accessToken') if isinstance(res_data.get('data'), dict) else res_data.get('accessToken')
+            print("✅ [토스] Access Token 발급 성공!")
+            return token
         else:
-            print(f"❌ 토스 토큰 발급 실패: {res.status_code} - {res.text}")
+            print(f"❌ [토스] 토큰 발급 실패 (코드: {res.status_code}): {res.text}")
             return None
     except Exception as e:
-        print(f"❌ 토스 토큰 요청 에러: {e}")
-        return None
-
-def issue_toss_sharelink(token, product_id):
-    """상품별 수익 추적용 쉐어링크(shortUrl) 발급"""
-    try:
-        url = f"{BASE_TOSS_URL}/openapi/links"
-        headers = {"Authorization": f"Bearer {token}"}
-        payload = {"productId": str(product_id)}
-        res = requests.post(url, headers=headers, json=payload, timeout=10)
-        if res.status_code == 200:
-            return res.json().get('data', {}).get('shortUrl')
-        return None
-    except Exception:
+        print(f"❌ [토스] 토큰 예외: {e}")
         return None
 
 def fetch_toss_deals():
     access_key = os.environ.get('TOSS_ACCESS_KEY')
     secret_key = os.environ.get('TOSS_SECRET_KEY')
     
+    print("🔍 [토스] 수집 시작...")
     if not access_key or not secret_key:
-        print("⚠️ 토스 API Key(Secrets)가 설정되지 않았습니다.")
+        print("⚠️ [토스] Secrets 키가 설정되지 않았습니다.")
         return []
 
     token = get_toss_access_token(access_key, secret_key)
@@ -128,47 +118,83 @@ def fetch_toss_deals():
     headers = {"Authorization": f"Bearer {token}"}
     toss_items = []
 
-    try:
-        # 토스 하루특가 상품 목록 조회
-        url = f"{BASE_TOSS_URL}/openapi/products/daily-deals"
-        res = requests.get(url, headers=headers, timeout=10)
-        
-        if res.status_code == 200:
-            products = res.json().get('data', [])
-            
-            for item in products:
-                prod_id = item.get('id') or item.get('productId')
-                
-                # 내 수익 추적 쉐어링크 생성
-                short_url = issue_toss_sharelink(token, prod_id) or item.get('linkUrl')
-                
-                if short_url:
-                    orig_price = item.get('originalPrice', 0)
-                    sale_price = item.get('price', 0)
-                    discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
+    # 엔드포인트 목록 탐색 (하루특가 / 베스트)
+    endpoints = [
+        "/openapi/v1/products/daily-deals",
+        "/openapi/products/daily-deals",
+        "/openapi/v1/products",
+        "/openapi/products"
+    ]
 
-                    toss_items.append({
-                        "id": f"toss_{prod_id}",
-                        "source": "toss",
-                        "title": item.get('name') or item.get('title'),
-                        "price": f"{sale_price:,}원" if isinstance(sale_price, int) else str(sale_price),
-                        "originalPrice": f"{orig_price:,}원" if isinstance(orig_price, int) and orig_price > 0 else "",
-                        "discountRate": discount_rate,
-                        "imageUrl": item.get('imageUrl') or item.get('thumbnail'),
-                        "link": short_url, # 수익 연동 shortUrl
-                        "createdAt": datetime.now(KST).isoformat()
-                    })
-            print(f"✅ 토스 쉐어링크 상품 {len(toss_items)}개 수집 및 쉐어링크 발급 완료!")
-            return toss_items
-        else:
-            print(f"❌ 토스 상품 조회 실패 (코드: {res.status_code})")
-            return []
-    except Exception as e:
-        print(f"❌ 토스 수집 에러: {e}")
+    products = []
+    for ep in endpoints:
+        try:
+            res = requests.get(f"{BASE_TOSS_URL}{ep}", headers=headers, timeout=5)
+            if res.status_code == 200:
+                body = res.json()
+                data = body.get('data') or body.get('products') or []
+                if isinstance(data, list) and len(data) > 0:
+                    products = data
+                    print(f"✅ [토스] {ep} 에서 상품 {len(products)}개 조회 성공!")
+                    break
+            else:
+                print(f"ℹ️ [토스] 엔드포인트 {ep} 상태코드: {res.status_code}")
+        except Exception:
+            continue
+
+    if not products:
+        print("⚠️ [토스] 오픈 API로 가져온 상품이 0개입니다.")
         return []
 
+    for item in products:
+        prod_id = item.get('id') or item.get('productId')
+        if not prod_id:
+            continue
+
+        # 쉐어링크(shortUrl) 생성 시도
+        short_url = None
+        try:
+            link_res = requests.post(
+                f"{BASE_TOSS_URL}/openapi/v1/links", 
+                headers=headers, 
+                json={"productId": str(prod_id)}, 
+                timeout=5
+            )
+            if link_res.status_code != 200:
+                link_res = requests.post(
+                    f"{BASE_TOSS_URL}/openapi/links", 
+                    headers=headers, 
+                    json={"productId": str(prod_id)}, 
+                    timeout=5
+                )
+            if link_res.status_code == 200:
+                l_data = link_res.json()
+                short_url = l_data.get('data', {}).get('shortUrl') if isinstance(l_data.get('data'), dict) else l_data.get('shortUrl')
+        except Exception:
+            pass
+
+        final_link = short_url or item.get('linkUrl') or item.get('url') or f"https://toss.im/shopping/product/{prod_id}"
+        orig_price = item.get('originalPrice', 0)
+        sale_price = item.get('price') or item.get('productPrice') or 0
+        discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
+
+        toss_items.append({
+            "id": f"toss_{prod_id}",
+            "source": "toss",
+            "title": item.get('name') or item.get('title') or item.get('productName'),
+            "price": f"{sale_price:,}원" if isinstance(sale_price, int) and sale_price > 0 else str(sale_price),
+            "originalPrice": f"{orig_price:,}원" if isinstance(orig_price, int) and orig_price > 0 else "",
+            "discountRate": discount_rate,
+            "imageUrl": item.get('imageUrl') or item.get('thumbnail') or item.get('productImage'),
+            "link": final_link,
+            "createdAt": datetime.now(KST).isoformat()
+        })
+
+    print(f"✅ [토스] 최종 {len(toss_items)}개 상품 수집 완료!")
+    return toss_items
+
 # ==========================================
-# 3. 메인 실행 및 합치기
+# 3. 메인 실행
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
@@ -179,7 +205,7 @@ if __name__ == '__main__':
     except Exception:
         deals = []
 
-    # 24시간 지난 상품 자동 삭제
+    # 24시간 지난 만료 상품 삭제
     valid_deals = []
     for deal in deals:
         created_at_str = deal.get('createdAt')
@@ -191,7 +217,7 @@ if __name__ == '__main__':
             except ValueError:
                 continue
 
-    # 쿠팡 + 토스 신규 수집
+    # 쿠팡 + 토스 신규 수집 실행
     new_coupang = fetch_coupang_goldbox()
     new_toss = fetch_toss_deals()
     all_new = new_coupang + new_toss
