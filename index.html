@@ -28,7 +28,7 @@
     }
     header {
       text-align: center;
-      padding: 20px 0;
+      padding: 16px 0 12px 0;
     }
     header h1 {
       font-size: 24px;
@@ -39,6 +39,37 @@
       color: var(--text-sub);
       margin-top: 4px;
     }
+
+    /* 상단 안내 문구 박스 */
+    .notice-box {
+      background-color: #e4e4e7;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+    .notice-box ul {
+      list-style: none;
+    }
+    .notice-box li {
+      font-size: 11.5px;
+      color: #52525b;
+      line-height: 1.5;
+      word-break: keep-all;
+      position: relative;
+      padding-left: 12px;
+    }
+    .notice-box li + li {
+      margin-top: 4px;
+    }
+    .notice-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #71717a;
+      font-weight: bold;
+    }
+
     /* 카테고리 탭 */
     nav {
       display: flex;
@@ -60,6 +91,7 @@
       background-color: #27272a;
       color: #ffffff;
     }
+
     /* 영수증 스타일 목록 */
     .deal-list {
       display: flex;
@@ -153,6 +185,13 @@
     <p>쿠팡 · 토스 핫딜을 한 장의 영수증처럼 모았어요</p>
   </header>
 
+  <!-- 상단 안내 문구 영역 (동적 전환) -->
+  <section class="notice-box">
+    <ul id="noticeList">
+      <!-- 탭에 따라 자바스크립트로 문구가 바뀝니다 -->
+    </ul>
+  </section>
+
   <nav>
     <button class="tab-btn active" onclick="filterDeals('all', this)">전체</button>
     <button class="tab-btn" onclick="filterDeals('coupang', this)">쿠팡</button>
@@ -160,11 +199,39 @@
   </nav>
 
   <main class="deal-list" id="dealContainer">
-    <!-- 자바스크립트로 핫딜 카드가 채워집니다 -->
+    <!-- 핫딜 카드가 채워지는 영역 -->
   </main>
 
   <script>
     let allDeals = [];
+
+    // 각 탭별 안내 문구 정의
+    const noticeTexts = {
+      all: [
+        "이 포스팅은 쿠팡 파트너스 및 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+        "와우회원 카드할인/쿠폰적용가 기준입니다.",
+        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
+      ],
+      coupang: [
+        "이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+        "와우회원 카드할인/쿠폰적용가 기준입니다.",
+        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
+      ],
+      toss: [
+        "이 포스팅은 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
+      ]
+    };
+
+    // 안내 문구 업데이트 함수
+    function updateNotice(type) {
+      const listElem = document.getElementById('noticeList');
+      const texts = noticeTexts[type] || noticeTexts.all;
+      listElem.innerHTML = texts.map(t => `<li>${t}</li>`).join('');
+    }
+
+    // 초기 문구 설정 (전체)
+    updateNotice('all');
 
     // data.json 불러오기
     fetch('data.json?v=' + new Date().getTime())
@@ -210,6 +277,9 @@
     function filterDeals(source, btn) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      // 선택한 탭에 맞는 문구로 상단 박스 변경
+      updateNotice(source);
 
       if (source === 'all') {
         renderDeals(allDeals);
