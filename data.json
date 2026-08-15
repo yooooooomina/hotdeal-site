@@ -1,5 +1,93 @@
 [
   {
+    "id": "coupang_8948755004",
+    "source": "coupang",
+    "title": "퍼실 딥클린 초미세세탁 라벤더젤 맥스 일반용 액체세제 리필",
+    "price": "20,500.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img3c.coupangcdn.com/image/retail/images/189aef0f-57fa-4e77-a011-7153b28a28f4828987507822547713.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8948755004&itemId=28006565589&vendorItemId=94963996425&traceid=V0-143-a0ae0e7453e5197c",
+    "createdAt": "2026-08-15T16:18:54.610670+09:00"
+  },
+  {
+    "id": "coupang_9235174023",
+    "source": "coupang",
+    "title": "다우니 호텔 컬렉션 화이트티 초고농축 섬유유연제 본품",
+    "price": "19,920.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image14.coupangcdn.com/image/retail/images/213802933679323-888bffef-58ca-4f23-a151-ad3160c9d456.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9235174023&itemId=26803409478&vendorItemId=93773827051&traceid=V0-143-253d16c279907f21",
+    "createdAt": "2026-08-15T16:18:54.610664+09:00"
+  },
+  {
+    "id": "coupang_7370852457",
+    "source": "coupang",
+    "title": "벡셀 아이프라임 알카라인 AA건전지",
+    "price": "15,810.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img4c.coupangcdn.com/image/1025_amir_coupang_oct_80k/9da9/b1b09cb3158f4644b9423ebcaba4ccee0062cc011476a0da859e6a957ee5.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7370852457&itemId=22052097472&vendorItemId=89099363642&traceid=V0-143-127dcc7e8403d34b",
+    "createdAt": "2026-08-15T16:18:54.610654+09:00"
+  },
+  {
+    "id": "coupang_10000011473241",
+    "source": "coupang",
+    "title": "★AFTER3 종합이용권 1인",
+    "price": "38,000.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img3a.coupangcdn.com/image/travel_reactor/travelSeller/common/A01310517/12766f8d-77c3-4f0b-9bbf-506ceb86d89a.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000011473241&vendorItemId=70000308247592&itemId=20002242544307&traceid=V0-143-6f846bf92aff86f2",
+    "createdAt": "2026-08-15T16:18:54.610646+09:00"
+  },
+  {
+    "id": "coupang_10000011473921",
+    "source": "coupang",
+    "title": "★[한정수량 특가] AFTER4 종합이용권 1인",
+    "price": "55,000.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image8.coupangcdn.com/image/travel_reactor/travelSeller/common/A01310517/7b1f1f09-0ef9-47d6-afe8-67b02cafbb92.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000011473921&vendorItemId=70000308247571&itemId=20002242544264&traceid=V0-143-a46dc1f057809a44",
+    "createdAt": "2026-08-15T16:18:54.610640+09:00"
+  },
+  {
+    "id": "coupang_9037653959",
+    "source": "coupang",
+    "title": "헤인느 먼지없는 프리미엄 호텔 수건",
+    "price": "32,700.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image6.coupangcdn.com/image/vendor_inventory/7967/ea892a39df8a222fc62979581d75547a2359b06562ff34c7366e6e2c6721.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9037653959&itemId=26515129837&vendorItemId=93489573433&traceid=V0-143-fce88decf1520519",
+    "createdAt": "2026-08-15T16:18:54.610632+09:00"
+  },
+  {
+    "id": "coupang_10000011471654",
+    "source": "coupang",
+    "title": "01. ★선착순★1인 종일권",
+    "price": "65,000.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image6.coupangcdn.com/image/travel_reactor/travelSeller/common/A00186371/d29f8f5e-fb80-48f1-b315-719532527f82.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000011471654&vendorItemId=70000307063726&itemId=20002241024857&traceid=V0-143-51e0196f09c2daf8",
+    "createdAt": "2026-08-15T16:18:54.610629+09:00"
+  },
+  {
+    "id": "coupang_9411459142",
+    "source": "coupang",
+    "title": "프리미에팜 아동용 캐치 티니핑 5부 반팔 원피스",
+    "price": "19,900.0원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img3c.coupangcdn.com/image/rs_quotation_api/3zlswman/0409a1900109412899b4b10bebfe5a39.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9411459142&itemId=27964731294&vendorItemId=94922737624&traceid=V0-143-f2602c02df18d43b",
+    "createdAt": "2026-08-15T16:18:54.610604+09:00"
+  },
+  {
     "id": "coupang_9411459142",
     "source": "coupang",
     "title": "프리미에팜 아동용 캐치 티니핑 5부 반팔 원피스",
