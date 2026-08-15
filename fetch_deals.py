@@ -9,8 +9,23 @@ from datetime import datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 DATA_FILE = 'data.json'
 
+def format_price(price):
+    """가격 숫자/문자열에서 .0 소수점 제거 및 천단위 콤마 처리"""
+    if price is None or price == "":
+        return ""
+    try:
+        # float로 들어오거나 숫자 문자열일 경우 정수로 변환
+        price_int = int(float(price))
+        return f"{price_int:,}원"
+    except (ValueError, TypeError):
+        # 숫자로 변환 실패 시 .0원 문자열만 찾아 제거
+        price_str = str(price).replace('.0원', '원').replace('.0', '')
+        if not price_str.endswith('원') and price_str.isdigit():
+            price_str += '원'
+        return price_str
+
 # ==========================================
-# 1. 쿠팡 파트너스 자동 수집
+# 1. 쿠팡 파트너스 수집 로직 (가격 .0원 제거 적용)
 # ==========================================
 def generate_coupang_signature(method, url, secret_key, access_key):
     path, _, query = url.partition('?')
@@ -50,19 +65,26 @@ def fetch_coupang_goldbox():
             
             coupang_items = []
             for item in products:
-                orig_price = item.get('originalPrice', 0)
-                sale_price = item.get('productPrice', 0)
+                orig_price_raw = item.get('originalPrice', 0)
+                sale_price_raw = item.get('productPrice', 0)
+                
+                # 할인율 계산
                 discount_rate = ""
-                if orig_price and orig_price > sale_price:
-                    rate = round((1 - (sale_price / orig_price)) * 100)
-                    discount_rate = f"{rate}%"
+                try:
+                    orig_val = float(orig_price_raw) if orig_price_raw else 0
+                    sale_val = float(sale_price_raw) if sale_price_raw else 0
+                    if orig_val > sale_val > 0:
+                        rate = round((1 - (sale_val / orig_val)) * 100)
+                        discount_rate = f"{rate}%"
+                except Exception:
+                    pass
 
                 coupang_items.append({
                     "id": f"coupang_{item.get('productId')}",
                     "source": "coupang",
                     "title": item.get('productName'),
-                    "price": f"{sale_price:,}원",
-                    "originalPrice": f"{orig_price:,}원" if orig_price else "",
+                    "price": format_price(sale_price_raw), # .0원 제거 포맷팅 적용
+                    "originalPrice": format_price(orig_price_raw) if orig_price_raw else "",
                     "discountRate": discount_rate,
                     "imageUrl": item.get('productImage'),
                     "link": item.get('productUrl'),
@@ -78,7 +100,7 @@ def fetch_coupang_goldbox():
         return []
 
 # ==========================================
-# 2. 토스쇼핑 Open API 완전 자동 수집
+# 2. 토스쇼핑 Open API 수집 로직
 # ==========================================
 BASE_TOSS_URL = "https://sharelink-api.toss.im"
 
@@ -91,7 +113,6 @@ def fetch_toss_deals():
         print("⚠️ [토스] TOSS_ACCESS_KEY 또는 TOSS_SECRET_KEY 가 GitHub Secrets에 없습니다.")
         return []
 
-    # 1. Access Token 발급
     token = None
     try:
         auth_url = f"{BASE_TOSS_URL}/openapi/auth/token"
@@ -115,7 +136,6 @@ def fetch_toss_deals():
     headers = {"Authorization": f"Bearer {token}"}
     toss_items = []
 
-    # 2. 상품 목록 가져오기 시도 (여러 가능한 경로 탐색)
     target_endpoints = [
         "/openapi/v1/products/daily-deals",
         "/openapi/products/daily-deals",
@@ -124,7 +144,6 @@ def fetch_toss_deals():
     ]
 
     products = []
-    used_ep = ""
     for ep in target_endpoints:
         try:
             r = requests.get(f"{BASE_TOSS_URL}{ep}", headers=headers, timeout=10)
@@ -133,11 +152,8 @@ def fetch_toss_deals():
                 items = body.get('data') or body.get('products') or []
                 if isinstance(items, list) and len(items) > 0:
                     products = items
-                    used_ep = ep
                     print(f"✅ [토스] 엔드포인트({ep})에서 {len(products)}개 상품 확보!")
                     break
-            else:
-                print(f"ℹ️ [토스] 엔드포인트({ep}) 응답 코드: {r.status_code}")
         except Exception:
             continue
 
@@ -145,7 +161,6 @@ def fetch_toss_deals():
         print("⚠️ [토스] 오픈 API에서 유효한 상품 목록을 가져오지 못했습니다.")
         return []
 
-    # 3. 각 상품별 쉐어링크 발급 및 포맷팅
     for item in products:
         prod_id = item.get('id') or item.get('productId')
         if not prod_id:
@@ -175,16 +190,16 @@ def fetch_toss_deals():
             pass
 
         final_link = short_url or item.get('linkUrl') or f"https://toss.im/shopping/product/{prod_id}"
-        orig_price = item.get('originalPrice', 0)
-        sale_price = item.get('price') or item.get('productPrice') or 0
+        orig_price_raw = item.get('originalPrice', 0)
+        sale_price_raw = item.get('price') or item.get('productPrice') or 0
         discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
 
         toss_items.append({
             "id": f"toss_{prod_id}",
             "source": "toss",
             "title": item.get('name') or item.get('title') or item.get('productName'),
-            "price": f"{sale_price:,}원" if isinstance(sale_price, int) and sale_price > 0 else str(sale_price),
-            "originalPrice": f"{orig_price:,}원" if isinstance(orig_price, int) and orig_price > 0 else "",
+            "price": format_price(sale_price_raw),
+            "originalPrice": format_price(orig_price_raw) if orig_price_raw else "",
             "discountRate": discount_rate,
             "imageUrl": item.get('imageUrl') or item.get('thumbnail') or item.get('productImage'),
             "link": final_link,
@@ -195,7 +210,7 @@ def fetch_toss_deals():
     return toss_items
 
 # ==========================================
-# 3. 메인 실행 및 24시간 자동 만료 관리
+# 3. 메인 실행 및 24시간 만료 관리
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
