@@ -5,13 +5,12 @@ import hmac
 import hashlib
 import requests
 from datetime import datetime, timedelta, timezone
-from playwright.sync_api import sync_playwright
 
 KST = timezone(timedelta(hours=9))
 DATA_FILE = 'data.json'
 
 # ==========================================
-# 1. 쿠팡 파트너스 자동 수집 로직
+# 1. 쿠팡 파트너스 자동 수집 (100% 무인 자동)
 # ==========================================
 def generate_coupang_signature(method, url, secret_key, access_key):
     path, _, query = url.partition('?')
@@ -31,7 +30,7 @@ def fetch_coupang_goldbox():
     secret_key = os.environ.get('COUPANG_SECRET_KEY')
     
     if not access_key or not secret_key:
-        print("⚠️ [쿠팡] API Key가 설정되지 않았습니다.")
+        print("⚠️ [쿠팡] API Key(Secrets)가 설정되지 않았습니다.")
         return []
 
     domain = "https://api-gateway.coupang.com"
@@ -66,7 +65,7 @@ def fetch_coupang_goldbox():
                     "originalPrice": f"{orig_price:,}원" if orig_price else "",
                     "discountRate": discount_rate,
                     "imageUrl": item.get('productImage'),
-                    "link": item.get('productUrl'),
+                    "link": item.get('productUrl'), # 쿠팡 파트너스 수익 링크
                     "createdAt": datetime.now(KST).isoformat()
                 })
             print(f"✅ [쿠팡] 골드박스 상품 {len(coupang_items)}개 수집 완료!")
@@ -79,93 +78,103 @@ def fetch_coupang_goldbox():
         return []
 
 # ==========================================
-# 2. 토스쇼핑 웹 크롤링 자동 수집 (Playwright 정밀 탐색)
+# 2. 토스 쉐어링크 Open API 우회 수집 (수익 100% 자동화)
 # ==========================================
-def fetch_toss_deals():
-    toss_items = []
-    print("🔍 [토스] 브라우저 자동 수집 시작...")
-    
+BASE_TOSS_URL = "https://sharelink-api.toss.im"
+
+def make_toss_request(method, url, headers=None, json_data=None):
+    """토스 API 차단 우회 요청 처리"""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
-                viewport={"width": 390, "height": 844}
-            )
-            page = context.new_page()
-            
-            # 토스쇼핑 접속 및 스크롤
-            page.goto("https://toss.im/shopping", wait_until="domcontentloaded", timeout=30000)
-            page.wait_for_timeout(4000) # 4초 대기
-            
-            # 화면 아래로 조금 스크롤하여 더 많은 상품 로딩
-            page.evaluate("window.scrollBy(0, 800)")
-            page.wait_for_timeout(2000)
-
-            # 모든 링크 요소 가져오기
-            links = page.query_selector_all('a')
-            
-            seen_titles = set()
-            for idx, link_elem in enumerate(links):
-                try:
-                    href = link_elem.get_attribute('href') or ''
-                    text = link_elem.inner_text().strip()
-                    
-                    if not text or len(text) < 3:
-                        continue
-                        
-                    lines = [line.strip() for line in text.split('\n') if line.strip()]
-                    
-                    # 텍스트에 '원' 또는 숫자가 포함된 쇼핑 항목 추출
-                    has_price = any('원' in line or line.replace(',', '').isdigit() for line in lines)
-                    
-                    if has_price and len(lines) >= 2:
-                        title = lines[0]
-                        
-                        # 가격 문구 찾기
-                        price = "특가"
-                        for line in lines[1:]:
-                            if '원' in line:
-                                price = line
-                                break
-
-                        if title in seen_titles or len(title) < 2:
-                            continue
-                        seen_titles.add(title)
-
-                        # 이미지 찾기
-                        img_elem = link_elem.query_selector('img')
-                        img_url = img_elem.get_attribute('src') if img_elem else "https://via.placeholder.com/150"
-                        
-                        final_link = href if href.startswith('http') else f"https://toss.im{href}"
-
-                        toss_items.append({
-                            "id": f"toss_{idx}_{int(time.time())}",
-                            "source": "toss",
-                            "title": title,
-                            "price": price,
-                            "originalPrice": "",
-                            "discountRate": "특가",
-                            "imageUrl": img_url,
-                            "link": final_link,
-                            "createdAt": datetime.now(KST).isoformat()
-                        })
-                except Exception:
-                    continue
-                
-                if len(toss_items) >= 15:
-                    break
-                    
-            browser.close()
-            print(f"✅ [토스] 총 {len(toss_items)}개 특가 수집 완료!")
-            return toss_items
-
+        if method == "POST":
+            return requests.post(url, headers=headers, json=json_data, timeout=10)
+        else:
+            return requests.get(url, headers=headers, timeout=10)
     except Exception as e:
-        print(f"⚠️ [토스] 크롤링 수집 예외 발생: {e}")
+        print(f"⚠️ 요청 예외: {e}")
+        return None
+
+def get_toss_access_token(access_key, secret_key):
+    url = f"{BASE_TOSS_URL}/openapi/auth/token"
+    payload = {"accessKey": access_key, "secretKey": secret_key}
+    res = make_toss_request("POST", url, json_data=payload)
+    
+    if res and res.status_code == 200:
+        data = res.json().get('data', {})
+        token = data.get('accessToken') if isinstance(data, dict) else res.json().get('accessToken')
+        if token:
+            print("✅ [토스] Access Token 발급 성공!")
+            return token
+    print(f"❌ [토스] 토큰 발급 실패: {res.status_code if res else 'No Response'}")
+    return None
+
+def fetch_toss_deals():
+    access_key = os.environ.get('TOSS_ACCESS_KEY')
+    secret_key = os.environ.get('TOSS_SECRET_KEY')
+    
+    print("🔍 [토스] 수익 연동 수집 프로세스 시작...")
+    if not access_key or not secret_key:
+        print("⚠️ [토스] Secrets 키가 설정되지 않았습니다.")
+        return []
+
+    token = get_toss_access_token(access_key, secret_key)
+    if not token:
+        return []
+
+    headers = {"Authorization": f"Bearer {token}"}
+    toss_items = []
+
+    # 특가 상품 목록 API 호출
+    res = make_toss_request("GET", f"{BASE_TOSS_URL}/openapi/v1/products/daily-deals", headers=headers)
+    if not res or res.status_code != 200:
+        res = make_toss_request("GET", f"{BASE_TOSS_URL}/openapi/products/daily-deals", headers=headers)
+
+    if res and res.status_code == 200:
+        body = res.json()
+        products = body.get('data') or body.get('products') or []
+        print(f"✅ [토스] 상품 {len(products)}개 원본 데이터 확보!")
+
+        for item in products:
+            prod_id = item.get('id') or item.get('productId')
+            if not prod_id:
+                continue
+
+            # 수익 추적용 shortUrl 발급 요청
+            link_res = make_toss_request("POST", f"{BASE_TOSS_URL}/openapi/v1/links", headers=headers, json_data={"productId": str(prod_id)})
+            if not link_res or link_res.status_code != 200:
+                link_res = make_toss_request("POST", f"{BASE_TOSS_URL}/openapi/links", headers=headers, json_data={"productId": str(prod_id)})
+
+            short_url = None
+            if link_res and link_res.status_code == 200:
+                l_data = link_res.json().get('data', {})
+                short_url = l_data.get('shortUrl') if isinstance(l_data, dict) else link_res.json().get('shortUrl')
+
+            # 수익 주소 확보 실패시 기본 주소 백업
+            final_link = short_url or item.get('linkUrl') or f"https://toss.im/shopping/product/{prod_id}"
+
+            orig_price = item.get('originalPrice', 0)
+            sale_price = item.get('price') or item.get('productPrice') or 0
+            discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
+
+            toss_items.append({
+                "id": f"toss_{prod_id}",
+                "source": "toss",
+                "title": item.get('name') or item.get('title') or item.get('productName'),
+                "price": f"{sale_price:,}원" if isinstance(sale_price, int) and sale_price > 0 else str(sale_price),
+                "originalPrice": f"{orig_price:,}원" if isinstance(orig_price, int) and orig_price > 0 else "",
+                "discountRate": discount_rate,
+                "imageUrl": item.get('imageUrl') or item.get('thumbnail') or item.get('productImage'),
+                "link": final_link, # ★ 수익 정산 전용 shortUrl!
+                "createdAt": datetime.now(KST).isoformat()
+            })
+
+        print(f"✅ [토스] 최종 {len(toss_items)}개 수익형 핫딜 처리 완료!")
+        return toss_items
+    else:
+        print(f"❌ [토스] 상품 목록 조회 실패")
         return []
 
 # ==========================================
-# 3. 메인 실행
+# 3. 메인 실행 및 24시간 만료 관리
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
@@ -176,7 +185,7 @@ if __name__ == '__main__':
     except Exception:
         deals = []
 
-    # 24시간 지난 만료 상품 자동 삭제
+    # 24시간 지난 만료 상품 삭제
     valid_deals = []
     for deal in deals:
         created_at_str = deal.get('createdAt')
@@ -188,7 +197,7 @@ if __name__ == '__main__':
             except ValueError:
                 continue
 
-    # 쿠팡 + 토스 신규 수집 실행
+    # 쿠팡 + 토스 신규 수집
     new_coupang = fetch_coupang_goldbox()
     new_toss = fetch_toss_deals()
     all_new = new_coupang + new_toss
