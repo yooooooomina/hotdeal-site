@@ -1,5 +1,27 @@
 [
   {
+    "id": "coupang_7604723347",
+    "source": "coupang",
+    "title": "해태htb 갈배사이다 제로",
+    "price": "12,900원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image9.coupangcdn.com/image/vendor_inventory/49f9/74d9c746d407351a18e1f4627dbd303a8dfd4d7547b91663c3b93f562bd2.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7604723347&itemId=20126093307&vendorItemId=86918028403&traceid=V0-143-0ebb199c680ab263",
+    "createdAt": "2026-08-15T18:34:20.502409+09:00"
+  },
+  {
+    "id": "coupang_9411459142",
+    "source": "coupang",
+    "title": "프리미에팜 아동용 캐치 티니핑 5부 반팔 원피스",
+    "price": "19,900원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img3c.coupangcdn.com/image/rs_quotation_api/cvqo2gt7/e99f8f2bb6be4b3cb002723e77003162.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9411459142&itemId=27964731303&vendorItemId=94922737625&traceid=V0-143-f2602c02df18d43b",
+    "createdAt": "2026-08-15T18:34:20.502337+09:00"
+  },
+  {
     "id": "coupang_9138590394",
     "source": "coupang",
     "title": "아이리버 골전도 오픈형 생활방수 무선 블루투스 6.0 이어폰, IB-GX1, 블랙, 8시간",
