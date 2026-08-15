@@ -51,7 +51,7 @@
       margin-bottom: 20px;
     }
 
-    /* 🔥 핫딜 그리드: 무조건 한 줄에 2개씩 크게배치 */
+    /* 🔥 핫딜 그리드: 무조건 한 줄에 2개씩 크게 배치 */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -120,7 +120,7 @@
     .discount {
       font-size: 15px;
       font-weight: 700;
-      color: #eb5757; /* 스크린샷과 동일한 빨간색 */
+      color: #eb5757; /* 빨간색 할인율 */
     }
 
     .time-ago {
@@ -177,7 +177,7 @@
       }
     }
 
-    // 카드 출력 함수
+    // 🔴 카드 출력 함수 (할인율 빨간색 반영 보완 버전)
     function renderDeals(deals) {
       const container = document.getElementById('deal-list');
       container.innerHTML = '';
@@ -188,11 +188,11 @@
         card.href = item.link;
         card.target = '_blank';
 
-        // 할인율 표시 로직 (▼00%)
+        // 할인율 빨간색 표시 로직 (모든 데이터 형상 대응)
         let discountHtml = '';
-        if (item.discountRate) {
-          const rateNum = item.discountRate.replace('%', '').replace('▼', '');
-          if (rateNum && !isNaN(rateNum)) {
+        if (item.discountRate && item.discountRate !== '0%' && item.discountRate !== '특가') {
+          const rateNum = item.discountRate.toString().replace(/[^0-9]/g, '');
+          if (rateNum && parseInt(rateNum) > 0) {
             discountHtml = `<span class="discount">▼${rateNum}%</span>`;
           }
         }
