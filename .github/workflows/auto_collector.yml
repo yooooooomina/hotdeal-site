@@ -1,0 +1,37 @@
+name: Auto Hotdeal Collector
+
+on:
+  schedule:
+    # 매 1시간마다 자동 실행 (UTC 기준 0분)
+    - cron: '0 * * * *'
+  workflow_dispatch: # 직접 실행 버튼도 생성
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 코드 가져오기
+        uses: actions/checkout@v3
+
+      - name: 파이썬 환경 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 필요한 패키지 설치
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: 핫딜 수집 스크립트 실행
+        env:
+          COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
+          COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+        run: python fetch_deals.py
+
+      - name: 변경된 data.json 자동 커밋 및 푸시
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data.json
+          git diff-index --quiet HEAD || git commit -m "🔥 핫딜 정보 자동 업데이트 및 만료 상품 정리"
+          git push
