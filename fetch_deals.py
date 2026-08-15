@@ -79,7 +79,7 @@ def fetch_coupang_goldbox():
         return []
 
 # ==========================================
-# 2. 토스쇼핑 웹 크롤링 자동 수집 (Playwright)
+# 2. 토스쇼핑 웹 크롤링 자동 수집 (Playwright 정밀 탐색)
 # ==========================================
 def fetch_toss_deals():
     toss_items = []
@@ -87,40 +87,57 @@ def fetch_toss_deals():
     
     try:
         with sync_playwright() as p:
-            # 가상 브라우저 실행 (Chrome 모드)
             browser = p.chromium.launch(headless=True)
-            page = browser.new_page(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+                viewport={"width": 390, "height": 844}
             )
+            page = context.new_page()
             
-            # 토스쇼핑 접속 및 데이터 로딩 대기
-            page.goto("https://toss.im/shopping", wait_until="networkidle", timeout=20000)
-            page.wait_for_timeout(3000) # 자바스크립트 렌더링 3초 대기
+            # 토스쇼핑 접속 및 스크롤
+            page.goto("https://toss.im/shopping", wait_until="domcontentloaded", timeout=30000)
+            page.wait_for_timeout(4000) # 4초 대기
             
-            # 상품 요소 추출
-            cards = page.query_selector_all('a[href*="/shopping/"], div[class*="ProductCard"], div[class*="product"]')
+            # 화면 아래로 조금 스크롤하여 더 많은 상품 로딩
+            page.evaluate("window.scrollBy(0, 800)")
+            page.wait_for_timeout(2000)
+
+            # 모든 링크 요소 가져오기
+            links = page.query_selector_all('a')
             
             seen_titles = set()
-            for idx, card in enumerate(cards):
+            for idx, link_elem in enumerate(links):
                 try:
-                    text_content = card.inner_text()
-                    lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+                    href = link_elem.get_attribute('href') or ''
+                    text = link_elem.inner_text().strip()
                     
-                    # 상품 제목, 가격 추출
-                    if len(lines) >= 2:
-                        title = lines[0]
-                        price = lines[1] if '원' in lines[1] or '할인' in lines[0] else (lines[2] if len(lines) > 2 else lines[1])
+                    if not text or len(text) < 3:
+                        continue
                         
+                    lines = [line.strip() for line in text.split('\n') if line.strip()]
+                    
+                    # 텍스트에 '원' 또는 숫자가 포함된 쇼핑 항목 추출
+                    has_price = any('원' in line or line.replace(',', '').isdigit() for line in lines)
+                    
+                    if has_price and len(lines) >= 2:
+                        title = lines[0]
+                        
+                        # 가격 문구 찾기
+                        price = "특가"
+                        for line in lines[1:]:
+                            if '원' in line:
+                                price = line
+                                break
+
                         if title in seen_titles or len(title) < 2:
                             continue
                         seen_titles.add(title)
 
-                        # 이미지 및 링크 추출
-                        img_elem = card.query_selector('img')
+                        # 이미지 찾기
+                        img_elem = link_elem.query_selector('img')
                         img_url = img_elem.get_attribute('src') if img_elem else "https://via.placeholder.com/150"
                         
-                        link_attr = card.get_attribute('href')
-                        final_link = f"https://toss.im{link_attr}" if link_attr and link_attr.startswith('/') else (link_attr or "https://toss.im/shopping")
+                        final_link = href if href.startswith('http') else f"https://toss.im{href}"
 
                         toss_items.append({
                             "id": f"toss_{idx}_{int(time.time())}",
@@ -136,7 +153,7 @@ def fetch_toss_deals():
                 except Exception:
                     continue
                 
-                if len(toss_items) >= 15: # 최대 15개 수집
+                if len(toss_items) >= 15:
                     break
                     
             browser.close()
@@ -148,7 +165,7 @@ def fetch_toss_deals():
         return []
 
 # ==========================================
-# 3. 메인 실행 및 24시간 만료 관리
+# 3. 메인 실행
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
