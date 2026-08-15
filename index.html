@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>실시간 핫딜 알림</title>
+  <title>오늘의 핫딜 모아보기</title>
   <style>
     * {
       box-sizing: border-box;
@@ -20,38 +20,87 @@
       margin: 0 auto;
     }
 
-    /* 상단 카테고리 탭 버튼 */
+    /* 1. 맨 위 헤더 (아이콘 + 오늘의 핫딜 모아보기) */
+    .header-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-top: 8px;
+    }
+
+    .header-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffdede;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 11px;
+      color: #d32f2f;
+      border: 1px solid #ffbaba;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    /* 🔥 실시간 알림 받기 노란색 버튼 */
+    .alert-banner {
+      background-color: #ffd600;
+      border-radius: 24px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #111;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+
+    /* 2. 카테고리 탭 (쿠팡 / 토스쇼핑 / 토스 BEST50) */
     .tab-container {
       display: flex;
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .tab-btn {
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 10px 22px;
+      border-radius: 22px;
       border: none;
       background-color: #ffffff;
       color: #555;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 15px;
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
     .tab-btn.active {
       background-color: #6b46c1;
       color: #ffffff;
+      box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
     }
 
-    /* 안내 문구 */
+    /* 3. 탭별 변동 고지문구 */
     .notice-box {
-      font-size: 13px;
-      color: #666;
+      font-size: 13.5px;
+      color: #777;
       line-height: 1.6;
       margin-bottom: 20px;
+      padding-left: 2px;
     }
 
-    /* 🔥 핫딜 그리드: 무조건 한 줄에 2개씩 크게 배치 */
+    /* 4. 핫딜 카드 2열 그리드 */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -60,22 +109,21 @@
 
     .card {
       background: #ffffff;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       padding: 10px;
     }
 
-    /* 🖼️ 이미지 확대 (정사각형 꽉 차게) */
     .image-wrapper {
       width: 100%;
-      padding-top: 100%; /* 1:1 비율 */
+      padding-top: 100%;
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       background-color: #f8f9fa;
     }
@@ -102,7 +150,6 @@
       height: 38px;
     }
 
-    /* 💰 가격, 할인율, 업로드 시간 정보 */
     .price-info {
       display: flex;
       align-items: baseline;
@@ -117,10 +164,11 @@
       color: #111;
     }
 
+    /* 빨간색 할인율 */
     .discount {
       font-size: 15px;
-      font-weight: 700;
-      color: #eb5757; /* 빨간색 할인율 */
+      font-weight: 800;
+      color: #eb5757;
     }
 
     .time-ago {
@@ -132,26 +180,44 @@
 </head>
 <body>
 
-  <!-- 카테고리 탭 -->
+  <!-- 1. 헤더 영역 -->
+  <div class="header-container">
+    <div class="header-logo">핫딜<br>줍줍</div>
+    <div class="header-title">오늘의 핫딜 모아보기</div>
+  </div>
+
+  <!-- 노란색 알림 버튼 -->
+  <div class="alert-banner">
+    🔥 놓치면 품절! 실시간 알림 받기
+  </div>
+
+  <!-- 2. 카테고리 탭 -->
   <div class="tab-container">
-    <button class="tab-btn active" onclick="filterDeals('all')">전체</button>
-    <button class="tab-btn" onclick="filterDeals('coupang')">쿠팡</button>
+    <button class="tab-btn active" onclick="filterDeals('coupang')">쿠팡</button>
     <button class="tab-btn" onclick="filterDeals('toss')">토스쇼핑</button>
+    <button class="tab-btn" onclick="filterDeals('toss_best')">토스 BEST50</button>
   </div>
 
-  <!-- 안내 문구 -->
-  <div class="notice-box">
-    • 이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>
-    • 품절·가격 변동 시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!
+  <!-- 3. 탭별 고지 문구 영역 -->
+  <div class="notice-box" id="notice-content">
+    • 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>
+    • 와우회원 카드할인/쿠폰적용가 기준입니다.<br>
+    • 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!
   </div>
 
-  <!-- 핫딜 목록 카드 (2개씩 배치) -->
+  <!-- 4. 상품 카드 그리드 -->
   <div class="grid-container" id="deal-list"></div>
 
   <script>
     let allDeals = [];
 
-    // 상대 시간 계산 함수 (예: 28분 전, 1시간 전)
+    // 각 탭별 고지문구 정의
+    const notices = {
+      coupang: `• 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>• 와우회원 카드할인/쿠폰적용가 기준입니다.<br>• 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!`,
+      toss: `• 이 포스팅은 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>• 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!`,
+      toss_best: `• 이 포스팅은 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>• 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!`
+    };
+
     function getTimeAgo(dateString) {
       if (!dateString) return '';
       const now = new Date();
@@ -166,18 +232,16 @@
       return `${diffInDays}일 전`;
     }
 
-    // 데이터 로드
     async function loadDeals() {
       try {
         const response = await fetch('data.json?t=' + new Date().getTime());
         allDeals = await response.json();
-        renderDeals(allDeals);
+        filterDeals('coupang'); // 기본값: 쿠팡 탭
       } catch (error) {
         console.error('데이터 로드 실패:', error);
       }
     }
 
-    // 🔴 카드 출력 함수 (할인율 빨간색 반영 보완 버전)
     function renderDeals(deals) {
       const container = document.getElementById('deal-list');
       container.innerHTML = '';
@@ -188,7 +252,7 @@
         card.href = item.link;
         card.target = '_blank';
 
-        // 할인율 빨간색 표시 로직 (모든 데이터 형상 대응)
+        // 🔴 빨간색 할인율 계산/추출
         let discountHtml = '';
         if (item.discountRate && item.discountRate !== '0%' && item.discountRate !== '특가') {
           const rateNum = item.discountRate.toString().replace(/[^0-9]/g, '');
@@ -215,17 +279,25 @@
       });
     }
 
-    // 탭 필터링
+    // 탭 클릭 및 고지문구 전환
     function filterDeals(source) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      event.target?.classList?.add('active');
 
-      if (source === 'all') {
-        renderDeals(allDeals);
+      // 고지문구 교체
+      document.getElementById('notice-content').innerHTML = notices[source] || notices.coupang;
+
+      // 해당 탭 상품 필터링
+      let filtered = [];
+      if (source === 'coupang') {
+        filtered = allDeals.filter(d => d.source === 'coupang');
+      } else if (source === 'toss' || source === 'toss_best') {
+        filtered = allDeals.filter(d => d.source === 'toss');
       } else {
-        const filtered = allDeals.filter(d => d.source === source);
-        renderDeals(filtered);
+        filtered = allDeals;
       }
+
+      renderDeals(filtered);
     }
 
     loadDeals();
