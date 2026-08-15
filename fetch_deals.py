@@ -9,23 +9,31 @@ from datetime import datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 DATA_FILE = 'data.json'
 
-def format_price(price):
-    """가격 숫자/문자열에서 .0 소수점 제거 및 천단위 콤마 처리"""
+def clean_price(price):
+    """모든 형식의 가격 문자열/숫자에서 .0 소수점을 깔끔하게 제거 및 원화 포맷팅"""
     if price is None or price == "":
         return ""
-    try:
-        # float로 들어오거나 숫자 문자열일 경우 정수로 변환
-        price_int = int(float(price))
-        return f"{price_int:,}원"
-    except (ValueError, TypeError):
-        # 숫자로 변환 실패 시 .0원 문자열만 찾아 제거
-        price_str = str(price).replace('.0원', '원').replace('.0', '')
-        if not price_str.endswith('원') and price_str.isdigit():
-            price_str += '원'
-        return price_str
+    
+    price_str = str(price).strip()
+    
+    # 1. '.0원' 문자열 제거
+    price_str = price_str.replace('.0원', '원').replace('.00원', '원')
+    
+    # 2. 숫자 뒤 '.0' 제거 (예: '12900.0' -> '12900')
+    if '.0' in price_str and not '원' in price_str:
+        try:
+            price_str = str(int(float(price_str)))
+        except ValueError:
+            price_str = price_str.replace('.0', '')
+            
+    # 3. 순수 숫자인 경우 천단위 쉼표 + '원' 붙이기
+    if price_str.isdigit():
+        return f"{int(price_str):,}원"
+        
+    return price_str
 
 # ==========================================
-# 1. 쿠팡 파트너스 수집 로직 (가격 .0원 제거 적용)
+# 1. 쿠팡 파트너스 수집 로직 (소수점 완전 제거)
 # ==========================================
 def generate_coupang_signature(method, url, secret_key, access_key):
     path, _, query = url.partition('?')
@@ -68,7 +76,6 @@ def fetch_coupang_goldbox():
                 orig_price_raw = item.get('originalPrice', 0)
                 sale_price_raw = item.get('productPrice', 0)
                 
-                # 할인율 계산
                 discount_rate = ""
                 try:
                     orig_val = float(orig_price_raw) if orig_price_raw else 0
@@ -83,8 +90,8 @@ def fetch_coupang_goldbox():
                     "id": f"coupang_{item.get('productId')}",
                     "source": "coupang",
                     "title": item.get('productName'),
-                    "price": format_price(sale_price_raw), # .0원 제거 포맷팅 적용
-                    "originalPrice": format_price(orig_price_raw) if orig_price_raw else "",
+                    "price": clean_price(sale_price_raw),
+                    "originalPrice": clean_price(orig_price_raw) if orig_price_raw else "",
                     "discountRate": discount_rate,
                     "imageUrl": item.get('productImage'),
                     "link": item.get('productUrl'),
@@ -198,8 +205,8 @@ def fetch_toss_deals():
             "id": f"toss_{prod_id}",
             "source": "toss",
             "title": item.get('name') or item.get('title') or item.get('productName'),
-            "price": format_price(sale_price_raw),
-            "originalPrice": format_price(orig_price_raw) if orig_price_raw else "",
+            "price": clean_price(sale_price_raw),
+            "originalPrice": clean_price(orig_price_raw) if orig_price_raw else "",
             "discountRate": discount_rate,
             "imageUrl": item.get('imageUrl') or item.get('thumbnail') or item.get('productImage'),
             "link": final_link,
@@ -210,7 +217,7 @@ def fetch_toss_deals():
     return toss_items
 
 # ==========================================
-# 3. 메인 실행 및 24시간 만료 관리
+# 3. 메인 실행 및 기존 데이터 소수점 일괄 세척
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
@@ -221,7 +228,7 @@ if __name__ == '__main__':
     except Exception:
         deals = []
 
-    # 24시간 지난 만료 상품 삭제
+    # 1) 24시간 지난 만료 상품 삭제 + 기존 데이터 소수점 일괄 청소
     valid_deals = []
     for deal in deals:
         created_at_str = deal.get('createdAt')
@@ -229,11 +236,15 @@ if __name__ == '__main__':
             try:
                 created_at = datetime.fromisoformat(created_at_str)
                 if now - created_at < timedelta(hours=24):
+                    # 기존에 들어있던 데이터도 소수점 세척
+                    deal['price'] = clean_price(deal.get('price'))
+                    if deal.get('originalPrice'):
+                        deal['originalPrice'] = clean_price(deal.get('originalPrice'))
                     valid_deals.append(deal)
             except ValueError:
                 continue
 
-    # 신규 데이터 수집
+    # 2) 신규 데이터 수집
     new_coupang = fetch_coupang_goldbox()
     new_toss = fetch_toss_deals()
     all_new = new_coupang + new_toss
@@ -248,4 +259,4 @@ if __name__ == '__main__':
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(valid_deals, f, ensure_ascii=False, indent=2)
 
-    print(f"🎉 총 {len(valid_deals)}개 핫딜 저장 완료! (신규 추가: {added_count}개)")
+    print(f"🎉 총 {len(valid_deals)}개 핫딜 저장 완료! (기존 데이터 세척 및 신규 추가: {added_count}개)")
