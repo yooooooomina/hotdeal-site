@@ -10,30 +10,21 @@ KST = timezone(timedelta(hours=9))
 DATA_FILE = 'data.json'
 
 def clean_price(price):
-    """모든 형식의 가격 문자열/숫자에서 .0 소수점을 깔끔하게 제거 및 원화 포맷팅"""
+    """소수점 .0 제거 및 원화 포맷팅"""
     if price is None or price == "":
         return ""
-    
-    price_str = str(price).strip()
-    
-    # 1. '.0원' 문자열 제거
-    price_str = price_str.replace('.0원', '원').replace('.00원', '원')
-    
-    # 2. 숫자 뒤 '.0' 제거 (예: '12900.0' -> '12900')
-    if '.0' in price_str and not '원' in price_str:
+    price_str = str(price).strip().replace('.0원', '원').replace('.00원', '원')
+    if '.0' in price_str and '원' not in price_str:
         try:
             price_str = str(int(float(price_str)))
         except ValueError:
             price_str = price_str.replace('.0', '')
-            
-    # 3. 순수 숫자인 경우 천단위 쉼표 + '원' 붙이기
     if price_str.isdigit():
         return f"{int(price_str):,}원"
-        
     return price_str
 
 # ==========================================
-# 1. 쿠팡 파트너스 수집 로직 (소수점 완전 제거)
+# 1. 쿠팡 파트너스 수집 (할인율 정확히 계산)
 # ==========================================
 def generate_coupang_signature(method, url, secret_key, access_key):
     path, _, query = url.partition('?')
@@ -73,18 +64,24 @@ def fetch_coupang_goldbox():
             
             coupang_items = []
             for item in products:
-                orig_price_raw = item.get('originalPrice', 0)
-                sale_price_raw = item.get('productPrice', 0)
+                orig_price_raw = item.get('originalPrice', 0) or 0
+                sale_price_raw = item.get('productPrice', 0) or 0
                 
+                # 🔴 할인율 자동 수학 계산 (원가 > 할인가 일 경우)
                 discount_rate = ""
                 try:
-                    orig_val = float(orig_price_raw) if orig_price_raw else 0
-                    sale_val = float(sale_price_raw) if sale_price_raw else 0
-                    if orig_val > sale_val > 0:
+                    orig_val = float(orig_price_raw)
+                    sale_val = float(sale_price_raw)
+                    if orig_val > sale_val and orig_val > 0:
                         rate = round((1 - (sale_val / orig_val)) * 100)
-                        discount_rate = f"{rate}%"
+                        if rate > 0:
+                            discount_rate = f"▼{rate}%"
                 except Exception:
                     pass
+
+                # API에서 기본 제공하는 할인율 정보가 있으면 대체
+                if not discount_rate and item.get('discountRate'):
+                    discount_rate = f"▼{item.get('discountRate')}%"
 
                 coupang_items.append({
                     "id": f"coupang_{item.get('productId')}",
@@ -92,7 +89,7 @@ def fetch_coupang_goldbox():
                     "title": item.get('productName'),
                     "price": clean_price(sale_price_raw),
                     "originalPrice": clean_price(orig_price_raw) if orig_price_raw else "",
-                    "discountRate": discount_rate,
+                    "discountRate": discount_rate, # 저장할 할인율
                     "imageUrl": item.get('productImage'),
                     "link": item.get('productUrl'),
                     "createdAt": datetime.now(KST).isoformat()
@@ -107,7 +104,7 @@ def fetch_coupang_goldbox():
         return []
 
 # ==========================================
-# 2. 토스쇼핑 Open API 수집 로직
+# 2. 토스쇼핑 Open API 수집
 # ==========================================
 BASE_TOSS_URL = "https://sharelink-api.toss.im"
 
@@ -115,9 +112,7 @@ def fetch_toss_deals():
     access_key = os.environ.get('TOSS_ACCESS_KEY')
     secret_key = os.environ.get('TOSS_SECRET_KEY')
     
-    print("🔍 [토스] API 수집 시작...")
     if not access_key or not secret_key:
-        print("⚠️ [토스] TOSS_ACCESS_KEY 또는 TOSS_SECRET_KEY 가 GitHub Secrets에 없습니다.")
         return []
 
     token = None
@@ -128,16 +123,10 @@ def fetch_toss_deals():
             res_json = res.json()
             data = res_json.get('data') or {}
             token = data.get('accessToken') if isinstance(data, dict) else res_json.get('accessToken')
-            print("✅ [토스] Access Token 발급 성공!")
-        else:
-            print(f"❌ [토스] 토큰 발급 응답 실패 (코드: {res.status_code}) - {res.text}")
-            return []
-    except Exception as e:
-        print(f"❌ [토스] 토큰 요청 예외: {e}")
+    except Exception:
         return []
 
     if not token:
-        print("❌ [토스] Token 값이 비어있습니다.")
         return []
 
     headers = {"Authorization": f"Bearer {token}"}
@@ -159,14 +148,9 @@ def fetch_toss_deals():
                 items = body.get('data') or body.get('products') or []
                 if isinstance(items, list) and len(items) > 0:
                     products = items
-                    print(f"✅ [토스] 엔드포인트({ep})에서 {len(products)}개 상품 확보!")
                     break
         except Exception:
             continue
-
-    if not products:
-        print("⚠️ [토스] 오픈 API에서 유효한 상품 목록을 가져오지 못했습니다.")
-        return []
 
     for item in products:
         prod_id = item.get('id') or item.get('productId')
@@ -181,14 +165,6 @@ def fetch_toss_deals():
                 json={"productId": str(prod_id)},
                 timeout=5
             )
-            if link_res.status_code != 200:
-                link_res = requests.post(
-                    f"{BASE_TOSS_URL}/openapi/links",
-                    headers=headers,
-                    json={"productId": str(prod_id)},
-                    timeout=5
-                )
-
             if link_res.status_code == 200:
                 l_body = link_res.json()
                 l_data = l_body.get('data') or {}
@@ -199,7 +175,10 @@ def fetch_toss_deals():
         final_link = short_url or item.get('linkUrl') or f"https://toss.im/shopping/product/{prod_id}"
         orig_price_raw = item.get('originalPrice', 0)
         sale_price_raw = item.get('price') or item.get('productPrice') or 0
-        discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
+        
+        discount_rate = ""
+        if item.get('discountRate'):
+            discount_rate = f"▼{item.get('discountRate')}%"
 
         toss_items.append({
             "id": f"toss_{prod_id}",
@@ -213,11 +192,10 @@ def fetch_toss_deals():
             "createdAt": datetime.now(KST).isoformat()
         })
 
-    print(f"🎉 [토스] 최종 {len(toss_items)}개 상품 처리 완료!")
     return toss_items
 
 # ==========================================
-# 3. 메인 실행 및 기존 데이터 소수점 일괄 세척
+# 3. 메인 실행 및 데이터 세척
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
@@ -228,7 +206,6 @@ if __name__ == '__main__':
     except Exception:
         deals = []
 
-    # 1) 24시간 지난 만료 상품 삭제 + 기존 데이터 소수점 일괄 청소
     valid_deals = []
     for deal in deals:
         created_at_str = deal.get('createdAt')
@@ -236,15 +213,10 @@ if __name__ == '__main__':
             try:
                 created_at = datetime.fromisoformat(created_at_str)
                 if now - created_at < timedelta(hours=24):
-                    # 기존에 들어있던 데이터도 소수점 세척
-                    deal['price'] = clean_price(deal.get('price'))
-                    if deal.get('originalPrice'):
-                        deal['originalPrice'] = clean_price(deal.get('originalPrice'))
                     valid_deals.append(deal)
             except ValueError:
                 continue
 
-    # 2) 신규 데이터 수집
     new_coupang = fetch_coupang_goldbox()
     new_toss = fetch_toss_deals()
     all_new = new_coupang + new_toss
@@ -259,4 +231,4 @@ if __name__ == '__main__':
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(valid_deals, f, ensure_ascii=False, indent=2)
 
-    print(f"🎉 총 {len(valid_deals)}개 핫딜 저장 완료! (기존 데이터 세척 및 신규 추가: {added_count}개)")
+    print(f"🎉 총 {len(valid_deals)}개 핫딜 저장 완료! (신규 추가: {added_count}개)")
