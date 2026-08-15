@@ -2,19 +2,19 @@ name: Auto Hotdeal Collector
 
 on:
   schedule:
-    # 매 1시간마다 자동 실행 (UTC 기준 0분)
+    # 매 1시간마다 자동 실행
     - cron: '0 * * * *'
-  workflow_dispatch: # 직접 실행 버튼도 생성
+  workflow_dispatch: # 수동 실행 버튼
 
 jobs:
   collect:
     runs-on: ubuntu-latest
     steps:
       - name: 저장소 코드 가져오기
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 파이썬 환경 설정
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -26,6 +26,8 @@ jobs:
         env:
           COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
           COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+          TOSS_ACCESS_KEY: ${{ secrets.TOSS_ACCESS_KEY }}
+          TOSS_SECRET_KEY: ${{ secrets.TOSS_SECRET_KEY }}
         run: python fetch_deals.py
 
       - name: 변경된 data.json 자동 커밋 및 푸시
