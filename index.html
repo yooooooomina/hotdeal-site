@@ -20,7 +20,7 @@
       margin: 0 auto;
     }
 
-    /* 1. 맨 위 헤더 (아이콘 + 오늘의 핫딜 모아보기) */
+    /* 헤더 영역 */
     .header-container {
       display: flex;
       align-items: center;
@@ -52,7 +52,7 @@
       color: #111;
     }
 
-    /* 🔥 실시간 알림 받기 노란색 버튼 */
+    /* 노란색 실시간 알림 버튼 */
     .alert-banner {
       background-color: #ffd600;
       border-radius: 24px;
@@ -63,10 +63,9 @@
       color: #111;
       margin-bottom: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      cursor: pointer;
     }
 
-    /* 2. 카테고리 탭 (쿠팡 / 토스쇼핑 / 토스 BEST50) */
+    /* 카테고리 탭 */
     .tab-container {
       display: flex;
       gap: 10px;
@@ -91,7 +90,7 @@
       box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
     }
 
-    /* 3. 탭별 변동 고지문구 */
+    /* 고지문구 */
     .notice-box {
       font-size: 13.5px;
       color: #777;
@@ -100,7 +99,7 @@
       padding-left: 2px;
     }
 
-    /* 4. 핫딜 카드 2열 그리드 */
+    /* 2열 그리드 배치 */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -153,18 +152,18 @@
     .price-info {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
       margin-top: auto;
     }
 
     .price {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       color: #111;
     }
 
-    /* 빨간색 할인율 */
+    /* 🔴 빨간색 할인율 스타일 */
     .discount {
       font-size: 15px;
       font-weight: 800;
@@ -180,38 +179,37 @@
 </head>
 <body>
 
-  <!-- 1. 헤더 영역 -->
+  <!-- 1. 헤더 -->
   <div class="header-container">
     <div class="header-logo">핫딜<br>줍줍</div>
     <div class="header-title">오늘의 핫딜 모아보기</div>
   </div>
 
-  <!-- 노란색 알림 버튼 -->
+  <!-- 알림 버튼 -->
   <div class="alert-banner">
     🔥 놓치면 품절! 실시간 알림 받기
   </div>
 
   <!-- 2. 카테고리 탭 -->
   <div class="tab-container">
-    <button class="tab-btn active" onclick="filterDeals('coupang')">쿠팡</button>
-    <button class="tab-btn" onclick="filterDeals('toss')">토스쇼핑</button>
-    <button class="tab-btn" onclick="filterDeals('toss_best')">토스 BEST50</button>
+    <button class="tab-btn active" onclick="filterDeals('coupang', event)">쿠팡</button>
+    <button class="tab-btn" onclick="filterDeals('toss', event)">토스쇼핑</button>
+    <button class="tab-btn" onclick="filterDeals('toss_best', event)">토스 BEST50</button>
   </div>
 
-  <!-- 3. 탭별 고지 문구 영역 -->
+  <!-- 3. 고지문구 -->
   <div class="notice-box" id="notice-content">
     • 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>
     • 와우회원 카드할인/쿠폰적용가 기준입니다.<br>
     • 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!
   </div>
 
-  <!-- 4. 상품 카드 그리드 -->
+  <!-- 4. 상품 그리드 -->
   <div class="grid-container" id="deal-list"></div>
 
   <script>
     let allDeals = [];
 
-    // 각 탭별 고지문구 정의
     const notices = {
       coupang: `• 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>• 와우회원 카드할인/쿠폰적용가 기준입니다.<br>• 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!`,
       toss: `• 이 포스팅은 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>• 품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!`,
@@ -236,7 +234,7 @@
       try {
         const response = await fetch('data.json?t=' + new Date().getTime());
         allDeals = await response.json();
-        filterDeals('coupang'); // 기본값: 쿠팡 탭
+        renderDeals(allDeals.filter(d => d.source === 'coupang'));
       } catch (error) {
         console.error('데이터 로드 실패:', error);
       }
@@ -252,12 +250,26 @@
         card.href = item.link;
         card.target = '_blank';
 
-        // 🔴 빨간색 할인율 계산/추출
+        // 🔴 할인율 빨간색 무조건 표시 처리
         let discountHtml = '';
-        if (item.discountRate && item.discountRate !== '0%' && item.discountRate !== '특가') {
-          const rateNum = item.discountRate.toString().replace(/[^0-9]/g, '');
-          if (rateNum && parseInt(rateNum) > 0) {
-            discountHtml = `<span class="discount">▼${rateNum}%</span>`;
+        
+        // 1) discountRate 필드가 존재할 때
+        if (item.discountRate && item.discountRate !== '특가') {
+          const digits = item.discountRate.toString().replace(/[^0-9]/g, '');
+          if (digits && parseInt(digits) > 0) {
+            discountHtml = `<span class="discount">▼${digits}%</span>`;
+          }
+        }
+
+        // 2) 원가와 할인가가 존재할 때 정밀 자동 계산
+        if (!discountHtml && item.originalPrice && item.price) {
+          const orig = parseInt(item.originalPrice.replace(/[^0-9]/g, ''));
+          const sale = parseInt(item.price.replace(/[^0-9]/g, ''));
+          if (orig > sale && orig > 0) {
+            const calculated = Math.round((1 - (sale / orig)) * 100);
+            if (calculated > 0) {
+              discountHtml = `<span class="discount">▼${calculated}%</span>`;
+            }
           }
         }
 
@@ -279,15 +291,14 @@
       });
     }
 
-    // 탭 클릭 및 고지문구 전환
-    function filterDeals(source) {
+    function filterDeals(source, event) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target?.classList?.add('active');
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
 
-      // 고지문구 교체
       document.getElementById('notice-content').innerHTML = notices[source] || notices.coupang;
 
-      // 해당 탭 상품 필터링
       let filtered = [];
       if (source === 'coupang') {
         filtered = allDeals.filter(d => d.source === 'coupang');
