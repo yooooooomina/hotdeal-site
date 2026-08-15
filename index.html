@@ -3,283 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>핫딜 줍줍 🔥</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>실시간 핫딜 알림</title>
   <style>
-    :root {
-      --bg-color: #f4f4f5;
-      --card-bg: #ffffff;
-      --text-main: #18181b;
-      --text-sub: #71717a;
-      --accent-red: #ef4444;
-      --coupang-color: #e60012;
-      --toss-color: #3182f6;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: 20px 12px;
-      max-width: 480px;
+      background-color: #eef0f5;
+      color: #333;
+      padding: 16px;
+      max-width: 600px;
       margin: 0 auto;
     }
-    header {
-      text-align: center;
-      padding: 16px 0 12px 0;
-    }
-    header h1 {
-      font-size: 24px;
-      font-weight: 900;
-    }
-    header p {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
 
-    /* 상단 안내 문구 박스 */
-    .notice-box {
-      background-color: #e4e4e7;
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-    }
-    .notice-box ul {
-      list-style: none;
-    }
-    .notice-box li {
-      font-size: 11.5px;
-      color: #52525b;
-      line-height: 1.5;
-      word-break: keep-all;
-      position: relative;
-      padding-left: 12px;
-    }
-    .notice-box li + li {
-      margin-top: 4px;
-    }
-    .notice-box li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #71717a;
-      font-weight: bold;
-    }
-
-    /* 카테고리 탭 */
-    nav {
+    /* 상단 카테고리 탭 버튼 */
+    .tab-container {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 16px;
     }
+
     .tab-btn {
-      flex: 1;
-      padding: 10px 0;
+      padding: 10px 20px;
+      border-radius: 20px;
       border: none;
-      border-radius: 12px;
-      background-color: #e4e4e7;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-sub);
+      background-color: #ffffff;
+      color: #555;
+      font-weight: bold;
+      font-size: 15px;
       cursor: pointer;
     }
+
     .tab-btn.active {
-      background-color: #27272a;
+      background-color: #6b46c1;
       color: #ffffff;
     }
 
-    /* 영수증 스타일 목록 */
-    .deal-list {
-      display: flex;
-      flex-direction: column;
+    /* 안내 문구 */
+    .notice-box {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* 🔥 핫딜 그리드: 무조건 한 줄에 2개씩 크게배치 */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
-    .receipt-card {
-      background-color: var(--card-bg);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      overflow: hidden;
       display: flex;
-      gap: 14px;
-      align-items: center;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 10px;
     }
-    .thumb-img {
-      width: 84px;
-      height: 84px;
+
+    /* 🖼️ 이미지 확대 (정사각형 꽉 차게) */
+    .image-wrapper {
+      width: 100%;
+      padding-top: 100%; /* 1:1 비율 */
+      position: relative;
       border-radius: 12px;
+      overflow: hidden;
+      background-color: #f8f9fa;
+    }
+
+    .image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      background-color: #f4f4f5;
     }
-    .info {
-      flex: 1;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: white;
-      margin-bottom: 4px;
-    }
-    .badge.coupang { background-color: var(--coupang-color); }
-    .badge.toss { background-color: var(--toss-color); }
+
     .title {
       font-size: 14px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 6px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin: 10px 0 8px 0;
+      color: #222;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      height: 38px;
     }
-    .price-box {
+
+    /* 💰 가격, 할인율, 업로드 시간 정보 */
+    .price-info {
       display: flex;
       align-items: baseline;
       gap: 6px;
+      flex-wrap: wrap;
+      margin-top: auto;
     }
-    .discount {
-      color: var(--accent-red);
-      font-weight: 900;
-      font-size: 15px;
-    }
+
     .price {
-      font-weight: 900;
-      font-size: 16px;
+      font-size: 17px;
+      font-weight: 800;
+      color: #111;
     }
-    .orig-price {
-      font-size: 12px;
-      color: #a1a1aa;
-      text-decoration: line-through;
-    }
-    .buy-btn {
-      display: block;
-      margin-top: 8px;
-      text-align: center;
-      background-color: #27272a;
-      color: white;
-      text-decoration: none;
-      font-size: 12px;
+
+    .discount {
+      font-size: 15px;
       font-weight: 700;
-      padding: 6px 0;
-      border-radius: 8px;
+      color: #eb5757; /* 스크린샷과 동일한 빨간색 */
     }
-    .empty-msg {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--text-sub);
-      font-size: 14px;
-      line-height: 1.5;
+
+    .time-ago {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>핫딜 줍줍 🔥</h1>
-    <p>쿠팡 · 토스 핫딜을 한 장의 영수증처럼 모았어요</p>
-  </header>
+  <!-- 카테고리 탭 -->
+  <div class="tab-container">
+    <button class="tab-btn active" onclick="filterDeals('all')">전체</button>
+    <button class="tab-btn" onclick="filterDeals('coupang')">쿠팡</button>
+    <button class="tab-btn" onclick="filterDeals('toss')">토스쇼핑</button>
+  </div>
 
-  <!-- 상단 안내 문구 영역 (동적 전환) -->
-  <section class="notice-box">
-    <ul id="noticeList">
-      <!-- 탭에 따라 자바스크립트로 문구가 바뀝니다 -->
-    </ul>
-  </section>
+  <!-- 안내 문구 -->
+  <div class="notice-box">
+    • 이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>
+    • 품절·가격 변동 시 핫딜 종료! 실시간 알림 받고 놓치지 마세요!
+  </div>
 
-  <nav>
-    <button class="tab-btn active" onclick="filterDeals('all', this)">전체</button>
-    <button class="tab-btn" onclick="filterDeals('coupang', this)">쿠팡</button>
-    <button class="tab-btn" onclick="filterDeals('toss', this)">토스</button>
-  </nav>
-
-  <main class="deal-list" id="dealContainer">
-    <!-- 핫딜 카드가 채워지는 영역 -->
-  </main>
+  <!-- 핫딜 목록 카드 (2개씩 배치) -->
+  <div class="grid-container" id="deal-list"></div>
 
   <script>
     let allDeals = [];
 
-    // 각 탭별 안내 문구 정의
-    const noticeTexts = {
-      all: [
-        "이 포스팅은 쿠팡 파트너스 및 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
-        "와우회원 카드할인/쿠폰적용가 기준입니다.",
-        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
-      ],
-      coupang: [
-        "이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
-        "와우회원 카드할인/쿠폰적용가 기준입니다.",
-        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
-      ],
-      toss: [
-        "이 포스팅은 토스쇼핑 쉐어링크 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
-        "품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요."
-      ]
-    };
+    // 상대 시간 계산 함수 (예: 28분 전, 1시간 전)
+    function getTimeAgo(dateString) {
+      if (!dateString) return '';
+      const now = new Date();
+      const past = new Date(dateString);
+      const diffInMinutes = Math.floor((now - past) / (1000 * 60));
 
-    // 안내 문구 업데이트 함수
-    function updateNotice(type) {
-      const listElem = document.getElementById('noticeList');
-      const texts = noticeTexts[type] || noticeTexts.all;
-      listElem.innerHTML = texts.map(t => `<li>${t}</li>`).join('');
+      if (diffInMinutes < 1) return '방금 전';
+      if (diffInMinutes < 60) return `${diffInMinutes}분 전`;
+      const diffInHours = Math.floor(diffInMinutes / 60);
+      if (diffInHours < 24) return `${diffInHours}시간 전`;
+      const diffInDays = Math.floor(diffInHours / 24);
+      return `${diffInDays}일 전`;
     }
 
-    // 초기 문구 설정 (전체)
-    updateNotice('all');
-
-    // data.json 불러오기
-    fetch('data.json?v=' + new Date().getTime())
-      .then(res => res.json())
-      .then(data => {
-        allDeals = data;
+    // 데이터 로드
+    async function loadDeals() {
+      try {
+        const response = await fetch('data.json?t=' + new Date().getTime());
+        allDeals = await response.json();
         renderDeals(allDeals);
-      })
-      .catch(err => {
-        console.error('데이터 로드 실패:', err);
-        showEmpty();
-      });
+      } catch (error) {
+        console.error('데이터 로드 실패:', error);
+      }
+    }
 
+    // 카드 출력 함수
     function renderDeals(deals) {
-      const container = document.getElementById('dealContainer');
+      const container = document.getElementById('deal-list');
       container.innerHTML = '';
 
-      if (!deals || deals.length === 0) {
-        showEmpty();
-        return;
-      }
-
       deals.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'receipt-card';
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = item.link;
+        card.target = '_blank';
+
+        // 할인율 표시 로직 (▼00%)
+        let discountHtml = '';
+        if (item.discountRate) {
+          const rateNum = item.discountRate.replace('%', '').replace('▼', '');
+          if (rateNum && !isNaN(rateNum)) {
+            discountHtml = `<span class="discount">▼${rateNum}%</span>`;
+          }
+        }
+
+        const timeAgoStr = getTimeAgo(item.createdAt);
+
         card.innerHTML = `
-          <img class="thumb-img" src="${item.imageUrl || 'https://via.placeholder.com/100'}" alt="상품이미지" />
-          <div class="info">
-            <span class="badge ${item.source}">${item.source === 'coupang' ? '쿠팡' : '토스'}</span>
-            <div class="title">${item.title}</div>
-            <div class="price-box">
-              ${item.discountRate ? `<span class="discount">${item.discountRate}</span>` : ''}
-              <span class="price">${item.price}</span>
-              ${item.originalPrice ? `<span class="orig-price">${item.originalPrice}</span>` : ''}
-            </div>
-            <a href="${item.link}" target="_blank" class="buy-btn">특가 보러가기 ➔</a>
+          <div class="image-wrapper">
+            <img src="${item.imageUrl}" alt="${item.title}" loading="lazy">
+          </div>
+          <div class="title">${item.title}</div>
+          <div class="price-info">
+            <span class="price">${item.price}</span>
+            ${discountHtml}
+            <span class="time-ago">${timeAgoStr}</span>
           </div>
         `;
+
         container.appendChild(card);
       });
     }
 
-    function filterDeals(source, btn) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // 선택한 탭에 맞는 문구로 상단 박스 변경
-      updateNotice(source);
+    // 탭 필터링
+    function filterDeals(source) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
 
       if (source === 'all') {
         renderDeals(allDeals);
@@ -289,14 +228,7 @@
       }
     }
 
-    function showEmpty() {
-      const container = document.getElementById('dealContainer');
-      container.innerHTML = `
-        <div class="empty-msg">
-          지금 이 카테고리엔 살아있는 핫딜이 없어요.<br>새 핫딜이 뜨면 바로 채워드릴게요 🫡
-        </div>
-      `;
-    }
+    loadDeals();
   </script>
 </body>
 </html>
