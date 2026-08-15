@@ -5,12 +5,13 @@ import hmac
 import hashlib
 import requests
 from datetime import datetime, timedelta, timezone
+from playwright.sync_api import sync_playwright
 
 KST = timezone(timedelta(hours=9))
 DATA_FILE = 'data.json'
 
 # ==========================================
-# 1. 쿠팡 파트너스 수집 로직
+# 1. 쿠팡 파트너스 자동 수집 로직
 # ==========================================
 def generate_coupang_signature(method, url, secret_key, access_key):
     path, _, query = url.partition('?')
@@ -78,123 +79,76 @@ def fetch_coupang_goldbox():
         return []
 
 # ==========================================
-# 2. 토스쇼핑 쉐어링크 Open API 수집 로직
+# 2. 토스쇼핑 웹 크롤링 자동 수집 (Playwright)
 # ==========================================
-BASE_TOSS_URL = "https://sharelink-api.toss.im"
-
-def get_toss_access_token(access_key, secret_key):
-    try:
-        url = f"{BASE_TOSS_URL}/openapi/auth/token"
-        payload = {
-            "accessKey": access_key,
-            "secretKey": secret_key
-        }
-        res = requests.post(url, json=payload, timeout=10)
-        if res.status_code == 200:
-            res_data = res.json()
-            token = res_data.get('data', {}).get('accessToken') if isinstance(res_data.get('data'), dict) else res_data.get('accessToken')
-            print("✅ [토스] Access Token 발급 성공!")
-            return token
-        else:
-            print(f"❌ [토스] 토큰 발급 실패 (코드: {res.status_code}): {res.text}")
-            return None
-    except Exception as e:
-        print(f"❌ [토스] 토큰 예외: {e}")
-        return None
-
 def fetch_toss_deals():
-    access_key = os.environ.get('TOSS_ACCESS_KEY')
-    secret_key = os.environ.get('TOSS_SECRET_KEY')
-    
-    print("🔍 [토스] 수집 시작...")
-    if not access_key or not secret_key:
-        print("⚠️ [토스] Secrets 키가 설정되지 않았습니다.")
-        return []
-
-    token = get_toss_access_token(access_key, secret_key)
-    if not token:
-        return []
-
-    headers = {"Authorization": f"Bearer {token}"}
     toss_items = []
-
-    # 엔드포인트 목록 탐색 (하루특가 / 베스트)
-    endpoints = [
-        "/openapi/v1/products/daily-deals",
-        "/openapi/products/daily-deals",
-        "/openapi/v1/products",
-        "/openapi/products"
-    ]
-
-    products = []
-    for ep in endpoints:
-        try:
-            res = requests.get(f"{BASE_TOSS_URL}{ep}", headers=headers, timeout=5)
-            if res.status_code == 200:
-                body = res.json()
-                data = body.get('data') or body.get('products') or []
-                if isinstance(data, list) and len(data) > 0:
-                    products = data
-                    print(f"✅ [토스] {ep} 에서 상품 {len(products)}개 조회 성공!")
-                    break
-            else:
-                print(f"ℹ️ [토스] 엔드포인트 {ep} 상태코드: {res.status_code}")
-        except Exception:
-            continue
-
-    if not products:
-        print("⚠️ [토스] 오픈 API로 가져온 상품이 0개입니다.")
-        return []
-
-    for item in products:
-        prod_id = item.get('id') or item.get('productId')
-        if not prod_id:
-            continue
-
-        # 쉐어링크(shortUrl) 생성 시도
-        short_url = None
-        try:
-            link_res = requests.post(
-                f"{BASE_TOSS_URL}/openapi/v1/links", 
-                headers=headers, 
-                json={"productId": str(prod_id)}, 
-                timeout=5
+    print("🔍 [토스] 브라우저 자동 수집 시작...")
+    
+    try:
+        with sync_playwright() as p:
+            # 가상 브라우저 실행 (Chrome 모드)
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             )
-            if link_res.status_code != 200:
-                link_res = requests.post(
-                    f"{BASE_TOSS_URL}/openapi/links", 
-                    headers=headers, 
-                    json={"productId": str(prod_id)}, 
-                    timeout=5
-                )
-            if link_res.status_code == 200:
-                l_data = link_res.json()
-                short_url = l_data.get('data', {}).get('shortUrl') if isinstance(l_data.get('data'), dict) else l_data.get('shortUrl')
-        except Exception:
-            pass
+            
+            # 토스쇼핑 접속 및 데이터 로딩 대기
+            page.goto("https://toss.im/shopping", wait_until="networkidle", timeout=20000)
+            page.wait_for_timeout(3000) # 자바스크립트 렌더링 3초 대기
+            
+            # 상품 요소 추출
+            cards = page.query_selector_all('a[href*="/shopping/"], div[class*="ProductCard"], div[class*="product"]')
+            
+            seen_titles = set()
+            for idx, card in enumerate(cards):
+                try:
+                    text_content = card.inner_text()
+                    lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+                    
+                    # 상품 제목, 가격 추출
+                    if len(lines) >= 2:
+                        title = lines[0]
+                        price = lines[1] if '원' in lines[1] or '할인' in lines[0] else (lines[2] if len(lines) > 2 else lines[1])
+                        
+                        if title in seen_titles or len(title) < 2:
+                            continue
+                        seen_titles.add(title)
 
-        final_link = short_url or item.get('linkUrl') or item.get('url') or f"https://toss.im/shopping/product/{prod_id}"
-        orig_price = item.get('originalPrice', 0)
-        sale_price = item.get('price') or item.get('productPrice') or 0
-        discount_rate = f"{item.get('discountRate')}%" if item.get('discountRate') else ""
+                        # 이미지 및 링크 추출
+                        img_elem = card.query_selector('img')
+                        img_url = img_elem.get_attribute('src') if img_elem else "https://via.placeholder.com/150"
+                        
+                        link_attr = card.get_attribute('href')
+                        final_link = f"https://toss.im{link_attr}" if link_attr and link_attr.startswith('/') else (link_attr or "https://toss.im/shopping")
 
-        toss_items.append({
-            "id": f"toss_{prod_id}",
-            "source": "toss",
-            "title": item.get('name') or item.get('title') or item.get('productName'),
-            "price": f"{sale_price:,}원" if isinstance(sale_price, int) and sale_price > 0 else str(sale_price),
-            "originalPrice": f"{orig_price:,}원" if isinstance(orig_price, int) and orig_price > 0 else "",
-            "discountRate": discount_rate,
-            "imageUrl": item.get('imageUrl') or item.get('thumbnail') or item.get('productImage'),
-            "link": final_link,
-            "createdAt": datetime.now(KST).isoformat()
-        })
+                        toss_items.append({
+                            "id": f"toss_{idx}_{int(time.time())}",
+                            "source": "toss",
+                            "title": title,
+                            "price": price,
+                            "originalPrice": "",
+                            "discountRate": "특가",
+                            "imageUrl": img_url,
+                            "link": final_link,
+                            "createdAt": datetime.now(KST).isoformat()
+                        })
+                except Exception:
+                    continue
+                
+                if len(toss_items) >= 15: # 최대 15개 수집
+                    break
+                    
+            browser.close()
+            print(f"✅ [토스] 총 {len(toss_items)}개 특가 수집 완료!")
+            return toss_items
 
-    print(f"✅ [토스] 최종 {len(toss_items)}개 상품 수집 완료!")
-    return toss_items
+    except Exception as e:
+        print(f"⚠️ [토스] 크롤링 수집 예외 발생: {e}")
+        return []
 
 # ==========================================
-# 3. 메인 실행
+# 3. 메인 실행 및 24시간 만료 관리
 # ==========================================
 if __name__ == '__main__':
     now = datetime.now(KST)
@@ -205,7 +159,7 @@ if __name__ == '__main__':
     except Exception:
         deals = []
 
-    # 24시간 지난 만료 상품 삭제
+    # 24시간 지난 만료 상품 자동 삭제
     valid_deals = []
     for deal in deals:
         created_at_str = deal.get('createdAt')
