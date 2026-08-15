@@ -18,15 +18,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: 필요한 패키지 및 브라우저 설치
+      - name: 필요한 패키지 설치
         run: |
-          pip install requests beautifulsoup4 playwright
-          playwright install --with-deps chromium
+          pip install requests beautifulsoup4
 
       - name: 핫딜 수집 스크립트 실행
         env:
           COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
           COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+          TOSS_ACCESS_KEY: ${{ secrets.TOSS_ACCESS_KEY }}
+          TOSS_SECRET_KEY: ${{ secrets.TOSS_SECRET_KEY }}
         run: python fetch_deals.py
 
       - name: 변경된 data.json 자동 커밋 및 푸시
