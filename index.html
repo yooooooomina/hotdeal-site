@@ -1,73 +1,232 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>핫딜 줍줍 🔥 오늘의 핫딜 모아보기</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>핫딜 줍줍 🔥</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f4f4f5;
+      --card-bg: #ffffff;
+      --text-main: #18181b;
+      --text-sub: #71717a;
+      --accent-red: #ef4444;
+      --coupang-color: #e60012;
+      --toss-color: #3182f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 20px 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+    header h1 {
+      font-size: 24px;
+      font-weight: 900;
+    }
+    header p {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+    /* 카테고리 탭 */
+    nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      border-radius: 12px;
+      background-color: #e4e4e7;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background-color: #27272a;
+      color: #ffffff;
+    }
+    /* 영수증 스타일 목록 */
+    .deal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .receipt-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .thumb-img {
+      width: 84px;
+      height: 84px;
+      border-radius: 12px;
+      object-fit: cover;
+      background-color: #f4f4f5;
+    }
+    .info {
+      flex: 1;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: white;
+      margin-bottom: 4px;
+    }
+    .badge.coupang { background-color: var(--coupang-color); }
+    .badge.toss { background-color: var(--toss-color); }
+    .title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .discount {
+      color: var(--accent-red);
+      font-weight: 900;
+      font-size: 15px;
+    }
+    .price {
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .orig-price {
+      font-size: 12px;
+      color: #a1a1aa;
+      text-decoration: line-through;
+    }
+    .buy-btn {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      background-color: #27272a;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 0;
+      border-radius: 8px;
+    }
+    .empty-msg {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-sub);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
 
-<div class="ticker">
-  <div class="ticker-track" id="tickerTrack"></div>
-</div>
+  <header>
+    <h1>핫딜 줍줍 🔥</h1>
+    <p>쿠팡 · 토스 핫딜을 한 장의 영수증처럼 모았어요</p>
+  </header>
 
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <span class="brand-mark">HOT</span>
-      <h1>핫딜 줍줍<span class="fire">🔥</span></h1>
-    </div>
-    <p class="tagline">쿠팡 · 토스 핫딜을 한 장의 영수증처럼 모았어요</p>
-  </div>
-  <div class="header-barcode" aria-hidden="true"></div>
-</header>
-
-<main>
-
-  <section class="alert-banner" id="alertBanner">
-    <div class="alert-inner">
-      <span class="alert-icon">🔔</span>
-      <span class="alert-text">놓치면 품절! 실시간 알림 받기</span>
-      <button class="alert-btn" id="alertBtn">알림 신청</button>
-    </div>
-  </section>
-
-  <nav class="tabs" id="tabs" role="tablist" aria-label="핫딜 소스 선택">
-    <button class="tab active" data-source="쿠팡" role="tab" aria-selected="true">쿠팡</button>
-    <button class="tab" data-source="토스쇼핑" role="tab" aria-selected="false">토스쇼핑</button>
-    <button class="tab" data-source="토스BEST50" role="tab" aria-selected="false">토스 BEST50</button>
+  <nav>
+    <button class="tab-btn active" onclick="filterDeals('all', this)">전체</button>
+    <button class="tab-btn" onclick="filterDeals('coupang', this)">쿠팡</button>
+    <button class="tab-btn" onclick="filterDeals('toss', this)">토스</button>
   </nav>
 
-  <ul class="disclaimer">
-    <li>이 포스팅은 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</li>
-    <li>와우회원 카드할인/쿠폰적용가 기준입니다.</li>
-    <li>품절·가격 변동시 핫딜 종료! 실시간 알림 받고 놓치지 마세요.</li>
-  </ul>
+  <main class="deal-list" id="dealContainer">
+    <!-- 자바스크립트로 핫딜 카드가 채워집니다 -->
+  </main>
 
-  <div class="status-row">
-    <span id="liveDot" class="live-dot"></span>
-    <span id="statusText">실시간으로 업데이트 중 · 지난 핫딜은 자동으로 사라져요</span>
-    <button id="simulateBtn" class="simulate-btn">+ 새 핫딜 시뮬레이션</button>
-  </div>
+  <script>
+    let allDeals = [];
 
-  <section class="deal-grid" id="dealGrid" aria-live="polite"></section>
+    // data.json 불러오기
+    fetch('data.json?v=' + new Date().getTime())
+      .then(res => res.json())
+      .then(data => {
+        allDeals = data;
+        renderDeals(allDeals);
+      })
+      .catch(err => {
+        console.error('데이터 로드 실패:', err);
+        showEmpty();
+      });
 
-  <p class="empty-state" id="emptyState" hidden>
-    지금 이 카테고리엔 살아있는 핫딜이 없어요.<br>새 핫딜이 뜨면 바로 채워드릴게요 🫡
-  </p>
+    function renderDeals(deals) {
+      const container = document.getElementById('dealContainer');
+      container.innerHTML = '';
 
-</main>
+      if (!deals || deals.length === 0) {
+        showEmpty();
+        return;
+      }
 
-<footer class="site-footer">
-  <div class="footer-barcode" aria-hidden="true"></div>
-  <p>핫딜 줍줍은 자동 수집 봇이 쿠팡·토스 특가를 모아 보여주는 정보성 사이트입니다.</p>
-</footer>
+      deals.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'receipt-card';
+        card.innerHTML = `
+          <img class="thumb-img" src="${item.imageUrl || 'https://via.placeholder.com/100'}" alt="상품이미지" />
+          <div class="info">
+            <span class="badge ${item.source}">${item.source === 'coupang' ? '쿠팡' : '토스'}</span>
+            <div class="title">${item.title}</div>
+            <div class="price-box">
+              ${item.discountRate ? `<span class="discount">${item.discountRate}</span>` : ''}
+              <span class="price">${item.price}</span>
+              ${item.originalPrice ? `<span class="orig-price">${item.originalPrice}</span>` : ''}
+            </div>
+            <a href="${item.link}" target="_blank" class="buy-btn">특가 보러가기 ➔</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-<div class="toast" id="toast"></div>
+    function filterDeals(source, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-<script src="script.js"></script>
+      if (source === 'all') {
+        renderDeals(allDeals);
+      } else {
+        const filtered = allDeals.filter(d => d.source === source);
+        renderDeals(filtered);
+      }
+    }
+
+    function showEmpty() {
+      const container = document.getElementById('dealContainer');
+      container.innerHTML = `
+        <div class="empty-msg">
+          지금 이 카테고리엔 살아있는 핫딜이 없어요.<br>새 핫딜이 뜨면 바로 채워드릴게요 🫡
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>
