@@ -3,12 +3,12 @@
     "id": "coupang_8114968257",
     "source": "coupang",
     "title": "코카콜라 오리지널",
-    "price": "19,090원",
+    "price": "18,870원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/33597756644270-a896be4b-096d-4ab8-94c7-8d5adf8f1762.jpg",
+    "imageUrl": "https://image8.coupangcdn.com/image/retail/images/33597756644270-a896be4b-096d-4ab8-94c7-8d5adf8f1762.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8114968257&itemId=23870012336&vendorItemId=3001012632&traceid=V0-143-8366823466797979",
-    "createdAt": "2026-09-02T07:04:11.061502+09:00"
+    "createdAt": "2026-09-02T08:04:03.955336+09:00"
   },
   {
     "id": "coupang_6902113163",
@@ -17,9 +17,9 @@
     "price": "118,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4c.coupangcdn.com/image/vendor_inventory/9245/92445be2b3c5957080967b3959a89e5d40dd7ac17fba6cb35d187aa95f98.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6902113163&itemId=24967804045&vendorItemId=92014439568&traceid=V0-143-91d7f95e842a48ba",
-    "createdAt": "2026-09-02T07:04:11.061524+09:00"
+    "imageUrl": "https://static.coupangcdn.com/image/vendor_inventory/5adf/56af04084c3ad1a27c0dceb23c70e8b4dc1f2e4d3a4f226ef620e45496b0.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6902113163&itemId=18223105928&vendorItemId=83454344514&traceid=V0-143-91d7f95e842a48ba",
+    "createdAt": "2026-09-02T08:04:03.955357+09:00"
   },
   {
     "id": "coupang_9039379842",
@@ -28,9 +28,9 @@
     "price": "14,850원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image4.coupangcdn.com/image/retail/images/76383476284976-beeac87e-878a-434d-9b87-acc1ecbc6961.jpg",
+    "imageUrl": "https://image1.coupangcdn.com/image/retail/images/76383476284976-beeac87e-878a-434d-9b87-acc1ecbc6961.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9039379842&itemId=5700559406&vendorItemId=92187217244&traceid=V0-143-f0de6cc045f18ac6",
-    "createdAt": "2026-09-02T07:04:11.061530+09:00"
+    "createdAt": "2026-09-02T08:04:03.955363+09:00"
   },
   {
     "id": "coupang_7660554607",
@@ -39,174 +39,130 @@
     "price": "7,200원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/vendor_inventory/a95d/7f701514bb4ded3eb0e7816dec9fb89f006b8352db0e53bcfcb1c56e6383.jpg",
+    "imageUrl": "https://img1a.coupangcdn.com/image/vendor_inventory/a95d/7f701514bb4ded3eb0e7816dec9fb89f006b8352db0e53bcfcb1c56e6383.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7660554607&itemId=24566083969&vendorItemId=3000140916&traceid=V0-143-5e26579bbfb2861f",
-    "createdAt": "2026-09-02T07:04:11.061535+09:00"
+    "createdAt": "2026-09-02T08:04:03.955368+09:00"
   },
   {
     "id": "coupang_8758755740",
     "source": "coupang",
     "title": "테팔 인덕션 티타늄 1X 데일리 컴포트 프라이팬",
-    "price": "38,890원",
+    "price": "32,590원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img2a.coupangcdn.com/image/retail/images/2025/05/07/14/3/f4024daf-9035-4009-8450-7123872220d1.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8758755740&itemId=26763265960&vendorItemId=92459396108&traceid=V0-143-f54c08ac9885c5ae",
-    "createdAt": "2026-09-02T07:04:11.061542+09:00"
+    "imageUrl": "https://img5c.coupangcdn.com/image/retail/images/2025/05/07/13/6/e973a017-2cf2-4cda-8e72-3ec6b53e299c.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8758755740&itemId=25466718519&vendorItemId=92459258790&traceid=V0-143-f54c08ac9885c5ae",
+    "createdAt": "2026-09-02T08:04:03.955375+09:00"
   },
   {
     "id": "coupang_8631563688",
     "source": "coupang",
-    "title": "마스마룰즈 남녀공용 래빗에코백 + 파우치 세트",
+    "title": "마스마룰즈 래빗에코백 + 파우치 세트",
     "price": "39,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img2a.coupangcdn.com/image/retail/images/1796037066061602-52fc3438-ec2b-47ee-8480-e502c8d8878c.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8631563688&itemId=25041770088&vendorItemId=92046387096&traceid=V0-143-a68debb68e4f9224",
-    "createdAt": "2026-09-02T07:04:11.061546+09:00"
+    "imageUrl": "https://img1a.coupangcdn.com/image/rs_quotation_api/ukttee6r/158e4331460a45488cd753d088ecc054.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8631563688&itemId=28637583336&vendorItemId=95580450495&traceid=V0-143-a68debb68e4f9224",
+    "createdAt": "2026-09-02T08:04:03.955379+09:00"
   },
   {
-    "id": "coupang_7666070794",
+    "id": "coupang_6854281548",
     "source": "coupang",
-    "title": "제주삼다수 그린 무라벨",
-    "price": "19,250원",
+    "title": "스포츠리서치 오메가-3 피쉬 오일 트리플 스트렝스 1040mg 소프트젤",
+    "price": "74,840원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/71398668409167-aad21143-5084-4cd5-9f9d-5175146cd6e0.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7666070794&itemId=26718631578&vendorItemId=86478559177&traceid=V0-143-edc79765d8325349",
-    "createdAt": "2026-09-02T07:04:11.061550+09:00"
+    "imageUrl": "https://img5c.coupangcdn.com/image/vendor_inventory/149f/57284b3964941bfd8c71de6484d9e1b6160c3cd7a2b31be1551dba42acf7.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6854281548&itemId=20074502527&vendorItemId=81926658251&traceid=V0-143-eb204c859fad1f20",
+    "createdAt": "2026-09-02T08:04:03.955383+09:00"
   },
   {
-    "id": "coupang_7869554357",
+    "id": "coupang_10000010357435",
     "source": "coupang",
-    "title": "동원샘물 생수 무라벨",
-    "price": "12,660원",
+    "title": "★골드박스/초특급 한정수량★ 신화테마파크(Low 시즌) 1인권 <201026>",
+    "price": "45,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1a.coupangcdn.com/image/retail/images/3b402bb2-1e1f-46f1-8e0a-5f8996aa2dd3539209410227546122.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7869554357&itemId=26521735304&vendorItemId=94382287703&traceid=V0-143-17c2a755e3c9640f",
-    "createdAt": "2026-09-02T07:04:11.061554+09:00"
+    "imageUrl": "https://img4c.coupangcdn.com/image/travel_reactor/travelSeller/common/A00186691/6dda72a4-da7e-4b11-87d3-41fa704b2b79.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000010357435&vendorItemId=70000311002519&itemId=20002246569774&traceid=V0-143-aa0bb48f94d3eb7a",
+    "createdAt": "2026-09-02T08:04:03.955387+09:00"
   },
   {
-    "id": "coupang_7458810098",
+    "id": "coupang_7716589999",
     "source": "coupang",
-    "title": "락토핏 정품 골드 80포",
-    "price": "48,500원",
+    "title": "힐스사이언스다이어트 어덜트 고양이 기능성 사료",
+    "price": "128,280원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3a.coupangcdn.com/image/retail/images/110761024552709-b1dab33a-255f-427f-9506-990fe0208ad5.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7458810098&itemId=19378973001&vendorItemId=4635121437&traceid=V0-143-822f4d1c000a5436",
-    "createdAt": "2026-09-02T07:04:11.061565+09:00"
+    "imageUrl": "https://image12.coupangcdn.com/image/retail/images/1555605945608630-ee28edc3-9ce3-4d47-b412-64e112c191a4.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7716589999&itemId=841471234&vendorItemId=5380428877&traceid=V0-143-f8b7162b841a99c0",
+    "createdAt": "2026-09-02T08:04:03.955394+09:00"
   },
   {
-    "id": "coupang_1357034912",
+    "id": "coupang_6805133888",
     "source": "coupang",
-    "title": "[로켓프레시] 비비고 썰은 배추김치",
-    "price": "14,900원",
+    "title": "머지 더 퍼스트 브로우 펜슬 0.25g",
+    "price": "10,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image6.coupangcdn.com/image/retail/images/221639853587633-d5b81c99-7a8f-4a0b-b78b-b2c02618a7ce.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=1357034912&itemId=24341584512&vendorItemId=91357072725&traceid=V0-143-696c55efe3779e37",
-    "createdAt": "2026-09-02T07:04:11.061569+09:00"
+    "imageUrl": "https://static.coupangcdn.com/image/retail/images/570863863933503-ef05d88e-2588-4d93-b85d-f797327c067b.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6805133888&itemId=554002259&vendorItemId=4455660344&traceid=V0-143-52828184340583a9",
+    "createdAt": "2026-09-02T08:04:03.955398+09:00"
   },
   {
-    "id": "coupang_8245782294",
+    "id": "coupang_9126488343",
     "source": "coupang",
-    "title": "햇반 흑미밥",
-    "price": "15,300원",
+    "title": "[2026년형] NICESUN 차이슨 무선 스틱 청소기 BLDC 모터 30KPa 초강력 흡입력 셀프 스탠딩 다양한 구성품",
+    "price": "88,470원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3c.coupangcdn.com/image/retail/images/153072522945755-7670f017-9813-4cfc-848e-82c9e971d2d6.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8245782294&itemId=12325728095&vendorItemId=79595756601&traceid=V0-143-22322ca92efa8934",
-    "createdAt": "2026-09-02T07:04:11.061573+09:00"
+    "imageUrl": "https://image7.coupangcdn.com/image/vendor_inventory/b00e/59499b143a018a9be4cbe3b3bff1c4461b7c3f6d8993561575bd140ffe82.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9126488343&itemId=26849567010&vendorItemId=94995748315&traceid=V0-143-626fd55c6430bbcf",
+    "createdAt": "2026-09-02T08:04:03.955402+09:00"
   },
   {
-    "id": "coupang_1298620713",
+    "id": "coupang_8769129764",
     "source": "coupang",
-    "title": "고산지 재배 당도선별 사과",
-    "price": "15,400원",
+    "title": "[최신형]  틴도우 다용도 패브릭 청소기 가정용  카페트 침구 쇼파 습식청소기",
+    "price": "94,400원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img2c.coupangcdn.com/image/retail/images/2881650750369639-7474526b-53d8-4924-92b7-eede329c178c.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=1298620713&itemId=2311599581&vendorItemId=70308370600&traceid=V0-143-4ced21a647336892",
-    "createdAt": "2026-09-02T07:04:11.061577+09:00"
+    "imageUrl": "https://img3a.coupangcdn.com/image/vendor_inventory/3301/9be07c17b7c00b1f15a66bb4674061d39fcc370ebda808df8441967c04c4.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8769129764&itemId=25505098235&vendorItemId=92679530374&traceid=V0-143-558144b06149cbf8",
+    "createdAt": "2026-09-02T08:04:03.955406+09:00"
   },
   {
-    "id": "coupang_8938973449",
+    "id": "coupang_7708595773",
     "source": "coupang",
-    "title": "다우니 실내건조 초고농축 섬유유연제 프레시 클린 본품",
-    "price": "19,460원",
+    "title": "에어보나 스팀 클렌저 청소기",
+    "price": "39,800원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1a.coupangcdn.com/image/retail/images/42427186099296-e20d18be-a84f-42b3-aa8d-41350b70777f.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8938973449&itemId=26551281178&vendorItemId=71805128607&traceid=V0-143-007e1eacf5ff6ad6",
-    "createdAt": "2026-09-02T07:04:11.061581+09:00"
+    "imageUrl": "https://img1a.coupangcdn.com/image/retail/images/477991996598952-a455cf68-a767-4419-8693-d09806688f0b.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7708595773&itemId=20657660957&vendorItemId=87721884274&traceid=V0-143-fab0bff8e3f21c7d",
+    "createdAt": "2026-09-02T08:04:03.955410+09:00"
   },
   {
-    "id": "coupang_9010033984",
+    "id": "coupang_10000010787485",
     "source": "coupang",
-    "title": "[로켓프레시] 모아바이오팜 당도선별 샤인머스캣",
-    "price": "10,990원",
+    "title": "●WEST동●스위트A(취사/스탠다드)",
+    "price": "287,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image1.coupangcdn.com/image/rs_quotation_api/jlqlk3cx/12f613d2fc6d459aa6fe26d90fbad0e0.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9010033984&itemId=26431145625&vendorItemId=93406926317&traceid=V0-143-bfbeda11758aceb2",
-    "createdAt": "2026-09-02T07:04:11.061585+09:00"
+    "imageUrl": "https://image12.coupangcdn.com/image/travel_reactor/travelSeller/resort/A00020814/11379f85-4e27-4758-9c3b-1e03e6dcd145.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000010787485&vendorItemId=70000283128678&itemId=20002205145478&traceid=V0-143-c683f23f079595fa",
+    "createdAt": "2026-09-02T08:04:03.955414+09:00"
   },
   {
-    "id": "coupang_116651697",
+    "id": "coupang_9479077135",
     "source": "coupang",
-    "title": "온더바디 코튼풋 발을씻자 풋샴푸 레몬민트향",
-    "price": "14,340원",
+    "title": "[브랜드인증] 존바바토스 아티산 블루 오 드 뚜왈렛",
+    "price": "59,600원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/357919474888215-a75c582f-eb9d-4497-8835-8a27d7ffa2f1.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=116651697&itemId=14745628255&vendorItemId=88458023000&traceid=V0-143-634b1d3d20ea63f9",
-    "createdAt": "2026-09-02T07:04:11.061589+09:00"
-  },
-  {
-    "id": "coupang_320322651",
-    "source": "coupang",
-    "title": "탐사 해달별 종이컵 185ml",
-    "price": "21,890원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image6.coupangcdn.com/image/retail/images/146939902812484-6e761b86-48ae-43ce-aa78-0c3e4f68eb59.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=320322651&itemId=1094726805&vendorItemId=5613506031&traceid=V0-143-645283cb0765d8ed",
-    "createdAt": "2026-09-02T07:04:11.061595+09:00"
-  },
-  {
-    "id": "coupang_1650278",
-    "source": "coupang",
-    "title": "게토레이 레몬",
-    "price": "15,980원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image3.coupangcdn.com/image/retail/images/2026/06/22/11/9/9f2f0406-088a-4c85-8210-95afee35d6b8.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=1650278&itemId=28707244556&vendorItemId=95648164351&traceid=V0-143-146e6bf32c3f5ab0",
-    "createdAt": "2026-09-02T07:04:11.061599+09:00"
-  },
-  {
-    "id": "coupang_4972302070",
-    "source": "coupang",
-    "title": "프레쉬팜 골드 파인애플 스틱",
-    "price": "11,480원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://img5c.coupangcdn.com/image/retail/images/10222648200606-33d8516b-14d2-4e24-aab4-f2749f5fa12b.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=4972302070&itemId=6603812777&vendorItemId=73897730910&traceid=V0-143-04f210696788c419",
-    "createdAt": "2026-09-02T07:04:11.061605+09:00"
-  },
-  {
-    "id": "coupang_7370852457",
-    "source": "coupang",
-    "title": "벡셀 아이프라임 알카라인 AA건전지",
-    "price": "15,930원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://img2a.coupangcdn.com/image/1025_amir_coupang_oct_80k/9da9/b1b09cb3158f4644b9423ebcaba4ccee0062cc011476a0da859e6a957ee5.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7370852457&itemId=22052097472&vendorItemId=89099363642&traceid=V0-143-127dcc7e8403d34b",
-    "createdAt": "2026-09-02T07:04:11.061609+09:00"
+    "imageUrl": "https://image3.coupangcdn.com/image/vendor_inventory/image_audit/prod/8b3ec5b2-a669-49ad-9a04-11f547a985fe_fixing_v2.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9479077135&itemId=28220840161&vendorItemId=3018266800&traceid=V0-143-e6cb6ed645985a31",
+    "createdAt": "2026-09-02T08:04:03.955420+09:00"
   },
   {
     "id": "coupang_7196702728",
@@ -215,96 +171,140 @@
     "price": "9,380원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/retail/images/122634733607541-732370a5-28e7-44e3-83cb-2be45947d12c.png",
+    "imageUrl": "https://img3c.coupangcdn.com/image/retail/images/122634733607541-732370a5-28e7-44e3-83cb-2be45947d12c.png",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7196702728&itemId=18202284707&vendorItemId=88825982856&traceid=V0-143-ff5e96dc0f792c04",
-    "createdAt": "2026-09-02T07:04:11.061613+09:00"
+    "createdAt": "2026-09-02T08:04:03.955424+09:00"
   },
   {
-    "id": "coupang_5449910664",
+    "id": "coupang_9210945202",
     "source": "coupang",
-    "title": "도브 화이트피치 리밸런싱 바디워시",
-    "price": "15,300원",
+    "title": "르크루제 1인밥 + 국 세트 + 쇼핑백 S",
+    "price": "48,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1c.coupangcdn.com/image/retail/images/25849860728790-73b6a2c4-2d3b-4492-972b-ebbaabbc9f1f.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=5449910664&itemId=9237627490&vendorItemId=85191841149&traceid=V0-143-9d74507817cdc3c5",
-    "createdAt": "2026-09-02T07:04:11.061616+09:00"
+    "imageUrl": "https://image6.coupangcdn.com/image/retail/images/46706053865806-fbaebada-9d85-4181-b761-c8cd9faa08bb.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9210945202&itemId=27241680260&vendorItemId=94208651461&traceid=V0-143-3818df3f2a32ed7b",
+    "createdAt": "2026-09-02T08:04:03.955428+09:00"
   },
   {
-    "id": "coupang_6631315054",
+    "id": "coupang_7657684704",
     "source": "coupang",
-    "title": "탐사 주방세제 리필",
-    "price": "9,990원",
+    "title": "삼익가구 에클레르 프리미엄 3인용 가죽 소파 + 쿠션 방문설치",
+    "price": "333,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/1025_amir_coupang_oct_80k/7169/cf8f3d25adc880c05a5d5a4028a070da5f8dd8e0bbb6311a75033ad35427.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6631315054&itemId=15118303556&vendorItemId=82340067621&traceid=V0-143-668cecfe38e3908a",
-    "createdAt": "2026-09-02T07:04:11.061620+09:00"
+    "imageUrl": "https://static.coupangcdn.com/image/retail/images/1810272899428441-a470bfff-4e8d-4347-b620-5f4ce5b43dcc.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7657684704&itemId=20392549517&vendorItemId=87475269159&traceid=V0-143-c6f6d5dbc243d6e5",
+    "createdAt": "2026-09-02T08:04:03.955434+09:00"
   },
   {
-    "id": "coupang_8054602080",
+    "id": "coupang_7281459708",
     "source": "coupang",
-    "title": "클룹 애사비소다 오리지널",
-    "price": "25,800원",
+    "title": "2026년 통관 미국산 구운땅콩 대용량 부드러운 식감 최상급 견과류",
+    "price": "10,320원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image5.coupangcdn.com/image/retail/images/24599535340050-cb0e951e-5cc4-46ba-94d2-ddfc455ce91b.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8054602080&itemId=22696756889&vendorItemId=89732354095&traceid=V0-143-e43327b0cf9c56d1",
-    "createdAt": "2026-09-02T07:04:11.061624+09:00"
+    "imageUrl": "https://img5c.coupangcdn.com/image/vendor_inventory/9dd5/cd8ff4706ea5f0c7f4c7158f9229c087e98c78c5ad0c434d5667a000073f.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7281459708&itemId=28595389171&vendorItemId=85727662208&traceid=V0-143-c7da3ae5280d0938",
+    "createdAt": "2026-09-02T08:04:03.955438+09:00"
   },
   {
-    "id": "coupang_7870072134",
+    "id": "coupang_6101296191",
     "source": "coupang",
-    "title": "하이트진로 블랙보리 오리지널",
-    "price": "17,150원",
+    "title": "라비킷 코트너 건조기시트 섬유유연제 비누향 본품",
+    "price": "18,500원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1c.coupangcdn.com/image/retail/images/1829554070653848-222cdda2-8568-4e65-99e7-c0124c67666e.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7870072134&itemId=5040801227&vendorItemId=3455715262&traceid=V0-143-5dd527eb9e34ad0f",
-    "createdAt": "2026-09-02T07:04:11.061628+09:00"
+    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/2074863779636-7fcae98d-95bb-46b3-9a5b-28d94494e13b.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6101296191&itemId=11435479204&vendorItemId=83043946697&traceid=V0-143-4c0d10fbf619c65c",
+    "createdAt": "2026-09-02T08:04:03.955442+09:00"
   },
   {
-    "id": "coupang_7300635644",
+    "id": "coupang_127817014",
     "source": "coupang",
-    "title": "탐사 고흡수 든든패드 레몬향",
-    "price": "10,060원",
+    "title": "도블레 칼집나지 않는 항균 도마",
+    "price": "19,800원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image2.coupangcdn.com/image/vendor_inventory/image_audit/stage/manual/860b1529e8fbc62e5d379cbd5d851c63ef76bc35d2e3d7559fff4d007dea_1750813366909.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7300635644&itemId=18681318710&vendorItemId=85815476305&traceid=V0-143-583cf4097ac5a5ff",
-    "createdAt": "2026-09-02T07:04:11.061635+09:00"
+    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/2025/06/06/10/1/bf17052b-05ec-4672-b424-869a8248dc4e.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=127817014&itemId=25697350905&vendorItemId=92686447906&traceid=V0-143-0230a6b04ac7e6cb",
+    "createdAt": "2026-09-02T08:04:03.955445+09:00"
   },
   {
-    "id": "coupang_7460519780",
+    "id": "coupang_7858510883",
     "source": "coupang",
-    "title": "나랑드사이다 제로 그린애플",
-    "price": "12,900원",
+    "title": "에스프레소스틱 로얄 헤이즐넛",
+    "price": "15,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image2.coupangcdn.com/image/retail/images/323324544247932-f54ea056-eb69-41a7-b7a8-9de2d13c5dc4.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7460519780&itemId=19328871278&vendorItemId=84216260720&traceid=V0-143-6f8156e4a06046cd",
-    "createdAt": "2026-09-02T07:04:11.061640+09:00"
+    "imageUrl": "https://image14.coupangcdn.com/image/retail/images/3410366628818350-609dc06b-96aa-4dfe-a623-d2522d742734.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7858510883&itemId=21438704874&vendorItemId=3063641674&traceid=V0-143-9ac3ddd08d7ec97c",
+    "createdAt": "2026-09-02T08:04:03.955449+09:00"
   },
   {
-    "id": "coupang_9131334002",
+    "id": "coupang_7497081980",
     "source": "coupang",
-    "title": "퍼실 뉴 디스크 프로 플러스 캡슐세제",
-    "price": "22,000원",
+    "title": "맘스럽 베이킹소다 버킷 프리미엄 초대용량 1등급원료 프랑스기술력",
+    "price": "16,730원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4c.coupangcdn.com/image/retail/images/83824178834001-9716e4f3-9860-412e-bf7d-0f2f75aea7a8.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9131334002&itemId=26868755763&vendorItemId=93838373787&traceid=V0-143-ca2c1deba36c597e",
-    "createdAt": "2026-09-02T07:04:11.061644+09:00"
+    "imageUrl": "https://img2c.coupangcdn.com/image/vendor_inventory/77fd/03c9fc50fb6858e8243feccf8654c28e6486eb5ee79e1a4a7e31a45f9e42.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7497081980&itemId=19617168107&vendorItemId=86738682969&traceid=V0-143-7d8b673be39050c5",
+    "createdAt": "2026-09-02T08:04:03.955453+09:00"
   },
   {
-    "id": "coupang_6899919825",
+    "id": "coupang_6583185155",
     "source": "coupang",
-    "title": "신지모루 스마트커버 애플펜슬 수납 폴리오 태블릿 케이스",
-    "price": "13,900원",
+    "title": "가그린 오리지널 구강청결제",
+    "price": "11,160원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image1.coupangcdn.com/image/retail/images/322088833231441-bdce8d97-4963-42ce-af01-45d7049afc4b.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6899919825&itemId=14559365392&vendorItemId=83728447123&traceid=V0-143-5ae118478df915fb",
-    "createdAt": "2026-09-02T07:04:11.061649+09:00"
+    "imageUrl": "https://img1a.coupangcdn.com/image/retail/images/247823989174287-50f6a974-15b6-4485-983f-8cee4707fcfb.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6583185155&itemId=14823352442&vendorItemId=3073291163&traceid=V0-143-082ec7485a4d5774",
+    "createdAt": "2026-09-02T08:04:03.955457+09:00"
+  },
+  {
+    "id": "coupang_9498346948",
+    "source": "coupang",
+    "title": "트루쿡 시그니처 플렉스 TPU 도마",
+    "price": "19,270원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image6.coupangcdn.com/image/vendor_inventory/image_audit/prod/edac2254-b475-4ad4-b631-70065e305dac_fixing_v2_gemini_image_fixing.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9498346948&itemId=28295081444&vendorItemId=93488610514&traceid=V0-143-8a48d4feed0a07f9",
+    "createdAt": "2026-09-02T08:04:03.955460+09:00"
+  },
+  {
+    "id": "coupang_6065154611",
+    "source": "coupang",
+    "title": "앱솔루트 킨더밀쉬 유아우유",
+    "price": "25,790원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image10.coupangcdn.com/image/retail/images/1417892515071002-49208dc6-7441-45ef-a38d-7017b8971e36.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6065154611&itemId=3800433483&vendorItemId=71785412257&traceid=V0-143-234508ca0ce4d2da",
+    "createdAt": "2026-09-02T08:04:03.955465+09:00"
+  },
+  {
+    "id": "coupang_9517441976",
+    "source": "coupang",
+    "title": "맘스럽 아토클래식 물티슈 독일 더마 테스트인증 저자극 소프트 캡형 40g 100매입 10개",
+    "price": "6,780원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image6.coupangcdn.com/image/vendor_inventory/7145/84d563277ba60a672915e1a2ff96231a3950053eb8eec3e7e746f549a668.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9517441976&itemId=28644299019&vendorItemId=95330024917&traceid=V0-143-0536c684e7d216b1",
+    "createdAt": "2026-09-02T08:04:03.955472+09:00"
+  },
+  {
+    "id": "coupang_9533680501",
+    "source": "coupang",
+    "title": "연세두유 고단백 Pro 플레인",
+    "price": "20,060원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image2.coupangcdn.com/image/retail/images/2026/05/11/13/8/61ab6e7d-d47b-4e14-a1a5-7d19ef89d46a.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9533680501&itemId=28457812051&vendorItemId=95408306903&traceid=V0-143-fe354a80784d101f",
+    "createdAt": "2026-09-02T08:04:03.955477+09:00"
   }
 ]
