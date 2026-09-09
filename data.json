@@ -6,9 +6,9 @@
     "price": "23,320원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image10.coupangcdn.com/image/retail/images/68357096027416-cc28db91-a4e9-4842-813a-3687cbff7e07.jpg",
+    "imageUrl": "https://image13.coupangcdn.com/image/retail/images/68357096027416-cc28db91-a4e9-4842-813a-3687cbff7e07.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9371774&itemId=22420087522&vendorItemId=88377301407&traceid=V0-143-90293e766f4ba76f&pt=0&slot=1",
-    "createdAt": "2026-09-10T03:05:49.947025+09:00"
+    "createdAt": "2026-09-10T04:04:03.922644+09:00"
   },
   {
     "id": "coupang_6586372374",
@@ -17,31 +17,9 @@
     "price": "20,730원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img5a.coupangcdn.com/image/retail/images/279864819118520-f6d17681-c8cb-45d3-8211-66f44a8210d0.jpg",
+    "imageUrl": "https://image8.coupangcdn.com/image/retail/images/279864819118520-f6d17681-c8cb-45d3-8211-66f44a8210d0.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6586372374&itemId=19081002442&vendorItemId=82081965656&traceid=V0-143-dfb2e13ddc16c873&pt=0&slot=2",
-    "createdAt": "2026-09-10T03:05:49.947044+09:00"
-  },
-  {
-    "id": "coupang_8487404030",
-    "source": "coupang",
-    "title": "탐사 강아지 고구마말랭이 간식",
-    "price": "9,890원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image9.coupangcdn.com/image/retail/images/68686746330726-d426d6a7-cd33-48b0-bf93-a4b4ba594981.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8487404030&itemId=24563910643&vendorItemId=91576053521&traceid=V0-143-9799d84d557b8ba6&pt=0&slot=3",
-    "createdAt": "2026-09-10T03:05:49.947051+09:00"
-  },
-  {
-    "id": "coupang_7546623602",
-    "source": "coupang",
-    "title": "해표 스페셜 선물세트 OC호",
-    "price": "17,420원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://img5c.coupangcdn.com/image/retail/images/426638835614869-0eb13842-0acd-4e14-af5e-bd7ee088d5bc.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7546623602&itemId=19850656661&vendorItemId=93384326052&traceid=V0-143-cb0cf07f0951d303&pt=0&slot=4",
-    "createdAt": "2026-09-10T03:05:49.947055+09:00"
+    "createdAt": "2026-09-10T04:04:03.922657+09:00"
   },
   {
     "id": "coupang_9595478188",
@@ -50,20 +28,20 @@
     "price": "6,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image15.coupangcdn.com/image/retail/images/2225324757892870-e1a59c2c-55e7-4edb-af57-87ead29918ed.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9595478188&itemId=28644574337&vendorItemId=95587203381&traceid=V0-143-a721f95a16e4cb5a&pt=0&slot=5",
-    "createdAt": "2026-09-10T03:05:49.947060+09:00"
+    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/2225324757892870-e1a59c2c-55e7-4edb-af57-87ead29918ed.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9595478188&itemId=28644574337&vendorItemId=95587203381&traceid=V0-143-a721f95a16e4cb5a&pt=0&slot=3",
+    "createdAt": "2026-09-10T04:04:03.922661+09:00"
   },
   {
-    "id": "coupang_9486705443",
+    "id": "coupang_7546623602",
     "source": "coupang",
-    "title": "삼성전자 4K UHD Mini LED TV",
-    "price": "1,399,000원",
+    "title": "해표 스페셜 선물세트 OC호",
+    "price": "17,420원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1a.coupangcdn.com/image/rs_quotation_api/ecfsdrwq/1621a4c0d247432981dcf64ee5c9ced7.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9486705443&itemId=28250106939&vendorItemId=95203519078&traceid=V0-143-bc7e97203b2ff0ae&pt=0&slot=6",
-    "createdAt": "2026-09-10T03:05:49.947065+09:00"
+    "imageUrl": "https://img2a.coupangcdn.com/image/retail/images/426638835614869-0eb13842-0acd-4e14-af5e-bd7ee088d5bc.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7546623602&itemId=19850656661&vendorItemId=93384326052&traceid=V0-143-cb0cf07f0951d303&pt=0&slot=4",
+    "createdAt": "2026-09-10T04:04:03.922665+09:00"
   },
   {
     "id": "coupang_84025689",
@@ -72,9 +50,20 @@
     "price": "8,250원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img5c.coupangcdn.com/image/retail/images/1842737200743764-732d396e-3133-4196-b15d-063b78dfbf57.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=84025689&itemId=25557075726&vendorItemId=4703935466&traceid=V0-143-0738dc73733fa90b&pt=0&slot=7",
-    "createdAt": "2026-09-10T03:05:49.947069+09:00"
+    "imageUrl": "https://image6.coupangcdn.com/image/retail/images/1842737200743764-732d396e-3133-4196-b15d-063b78dfbf57.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=84025689&itemId=25557075726&vendorItemId=4703935466&traceid=V0-143-0738dc73733fa90b&pt=0&slot=5",
+    "createdAt": "2026-09-10T04:04:03.922668+09:00"
+  },
+  {
+    "id": "coupang_9486705443",
+    "source": "coupang",
+    "title": "삼성전자 4K UHD Mini LED TV",
+    "price": "1,399,000원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img2c.coupangcdn.com/image/rs_quotation_api/ecfsdrwq/1621a4c0d247432981dcf64ee5c9ced7.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9486705443&itemId=28250106939&vendorItemId=95203519078&traceid=V0-143-bc7e97203b2ff0ae&pt=0&slot=6",
+    "createdAt": "2026-09-10T04:04:03.922672+09:00"
   },
   {
     "id": "coupang_9701463568",
@@ -83,9 +72,9 @@
     "price": "25,990원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/vendor_inventory/1803/72a8e69391032d5e0c2f9f75c2faa5cff5e3c932604a22b861ee48a5b0a3.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9701463568&itemId=29021527088&vendorItemId=95949222027&traceid=V0-143-006e46f87c2c59b5&pt=0&slot=8",
-    "createdAt": "2026-09-10T03:05:49.947076+09:00"
+    "imageUrl": "https://image7.coupangcdn.com/image/vendor_inventory/1803/72a8e69391032d5e0c2f9f75c2faa5cff5e3c932604a22b861ee48a5b0a3.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9701463568&itemId=29021527088&vendorItemId=95949222027&traceid=V0-143-006e46f87c2c59b5&pt=0&slot=7",
+    "createdAt": "2026-09-10T04:04:03.922674+09:00"
   },
   {
     "id": "coupang_7320394171",
@@ -94,9 +83,9 @@
     "price": "13,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image2.coupangcdn.com/image/retail/images/2023/05/03/14/5/653fe274-4e6a-4f29-a00b-da2b92ec644a.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7320394171&itemId=18774042799&vendorItemId=85905590455&traceid=V0-143-032ca51982579aee&pt=0&slot=9",
-    "createdAt": "2026-09-10T03:05:49.947080+09:00"
+    "imageUrl": "https://image14.coupangcdn.com/image/retail/images/2023/05/03/14/5/653fe274-4e6a-4f29-a00b-da2b92ec644a.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7320394171&itemId=18774042799&vendorItemId=85905590455&traceid=V0-143-032ca51982579aee&pt=0&slot=8",
+    "createdAt": "2026-09-10T04:04:03.922677+09:00"
   },
   {
     "id": "coupang_9672715002",
@@ -105,9 +94,20 @@
     "price": "15,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image4.coupangcdn.com/image/vendor_inventory/727c/cf14d49381466cd9927361b416ce5a84d39bc8c5dd11aadbebea84eca8ee.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9672715002&itemId=28921240598&vendorItemId=95852880576&traceid=V0-143-d6734582ee5d6119&pt=0&slot=10",
-    "createdAt": "2026-09-10T03:05:49.947084+09:00"
+    "imageUrl": "https://img3a.coupangcdn.com/image/vendor_inventory/727c/cf14d49381466cd9927361b416ce5a84d39bc8c5dd11aadbebea84eca8ee.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9672715002&itemId=28921240598&vendorItemId=95852880576&traceid=V0-143-d6734582ee5d6119&pt=0&slot=9",
+    "createdAt": "2026-09-10T04:04:03.922682+09:00"
+  },
+  {
+    "id": "coupang_1721241140",
+    "source": "coupang",
+    "title": "제스프리 썬골드키위 점보",
+    "price": "30,030원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image10.coupangcdn.com/image/retail/images/327484088415147-0cc7c167-b2b4-4ccf-b037-efa82c802a34.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=1721241140&itemId=8560904448&vendorItemId=75848270995&traceid=V0-143-154ce3ca77469be0&pt=0&slot=10",
+    "createdAt": "2026-09-10T04:04:03.922684+09:00"
   },
   {
     "id": "coupang_9555751633",
@@ -116,9 +116,9 @@
     "price": "11,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image7.coupangcdn.com/image/retail/images/187002198562338-e6f45e88-c1d3-4010-b215-d32c496eb01f.jpg",
+    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/187002198562338-e6f45e88-c1d3-4010-b215-d32c496eb01f.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9555751633&itemId=28513347998&vendorItemId=95462027603&traceid=V0-143-f789ea4f85435314&pt=0&slot=11",
-    "createdAt": "2026-09-10T03:05:49.947093+09:00"
+    "createdAt": "2026-09-10T04:04:03.922689+09:00"
   },
   {
     "id": "coupang_6310398705",
@@ -127,9 +127,9 @@
     "price": "15,630원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image3.coupangcdn.com/image/retail/images/775733589103684-18c9e414-29a2-4136-93a8-b83cf447ca9f.jpg",
+    "imageUrl": "https://image2.coupangcdn.com/image/retail/images/775733589103684-18c9e414-29a2-4136-93a8-b83cf447ca9f.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6310398705&itemId=13095032013&vendorItemId=80355915411&traceid=V0-143-bba2c824184673b5&pt=0&slot=12",
-    "createdAt": "2026-09-10T03:05:49.947097+09:00"
+    "createdAt": "2026-09-10T04:04:03.922691+09:00"
   },
   {
     "id": "coupang_9291480698",
@@ -138,20 +138,9 @@
     "price": "339,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/2026/04/23/12/7/0e52f840-b1f8-4c6a-b857-9b0bda8779d8.jpg",
+    "imageUrl": "https://img3a.coupangcdn.com/image/retail/images/2026/04/23/12/7/0e52f840-b1f8-4c6a-b857-9b0bda8779d8.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9291480698&itemId=27518284609&vendorItemId=95297333898&traceid=V0-143-1c0e5969eddeb8e5&pt=0&slot=13",
-    "createdAt": "2026-09-10T03:05:49.947101+09:00"
-  },
-  {
-    "id": "coupang_8519734294",
-    "source": "coupang",
-    "title": "미즈노 라이너 더블 쿠션 크루 양말 4족",
-    "price": "14,900원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image12.coupangcdn.com/image/retail/images/4782749141620399-63f18de8-6613-4c93-8b74-b9d29beadf0f.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8519734294&itemId=15164939893&vendorItemId=82386338067&traceid=V0-143-878b38527588d90f&pt=0&slot=14",
-    "createdAt": "2026-09-10T03:05:49.947105+09:00"
+    "createdAt": "2026-09-10T04:04:03.922695+09:00"
   },
   {
     "id": "coupang_8675101871",
@@ -160,20 +149,20 @@
     "price": "22,480원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/retail/images/12665621344467-9dc3cb69-da28-4404-8389-a5afc1638065.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8675101871&itemId=25183731638&vendorItemId=92180581246&traceid=V0-143-1ba7286fceec26f4&pt=0&slot=15",
-    "createdAt": "2026-09-10T03:05:49.947109+09:00"
+    "imageUrl": "https://img2a.coupangcdn.com/image/retail/images/12665621344467-9dc3cb69-da28-4404-8389-a5afc1638065.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8675101871&itemId=25183731638&vendorItemId=92180581246&traceid=V0-143-1ba7286fceec26f4&pt=0&slot=14",
+    "createdAt": "2026-09-10T04:04:03.922697+09:00"
   },
   {
-    "id": "coupang_7380933475",
+    "id": "coupang_8519734294",
     "source": "coupang",
-    "title": "센카 퍼펙트 휩 비타민씨 포어리스 글로우 에프 클렌징폼",
-    "price": "13,350원",
+    "title": "미즈노 라이너 더블 쿠션 크루 양말 4족",
+    "price": "14,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3c.coupangcdn.com/image/1025_amir_coupang_oct_80k/9573/2eae5112de1395e52c9bb804edc451ea1090ae39663b9f17b6a6b88c4cf7.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7380933475&itemId=26311652033&vendorItemId=85136091744&traceid=V0-143-2a84a7d93364e310&pt=0&slot=16",
-    "createdAt": "2026-09-10T03:05:49.947113+09:00"
+    "imageUrl": "https://image8.coupangcdn.com/image/retail/images/4782749141620399-63f18de8-6613-4c93-8b74-b9d29beadf0f.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8519734294&itemId=15164939893&vendorItemId=82386338067&traceid=V0-143-878b38527588d90f&pt=0&slot=15",
+    "createdAt": "2026-09-10T04:04:03.922700+09:00"
   },
   {
     "id": "coupang_9594074850",
@@ -182,20 +171,20 @@
     "price": "12,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image13.coupangcdn.com/image/retail/images/41338927163913-27c96d0b-2313-43b2-bec6-75c0421658a4.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9594074850&itemId=28640336556&vendorItemId=95583080789&traceid=V0-143-33fbe4aa45ecf783&pt=0&slot=17",
-    "createdAt": "2026-09-10T03:05:49.947117+09:00"
+    "imageUrl": "https://image9.coupangcdn.com/image/retail/images/41338927163913-27c96d0b-2313-43b2-bec6-75c0421658a4.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9594074850&itemId=28640336556&vendorItemId=95583080789&traceid=V0-143-33fbe4aa45ecf783&pt=0&slot=16",
+    "createdAt": "2026-09-10T04:04:03.922703+09:00"
   },
   {
-    "id": "coupang_7871935374",
+    "id": "coupang_7380933475",
     "source": "coupang",
-    "title": "크린랩 플러스 크린장갑",
-    "price": "15,200원",
+    "title": "센카 퍼펙트 휩 비타민씨 포어리스 글로우 에프 클렌징폼",
+    "price": "13,350원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3a.coupangcdn.com/image/retail/images/333615474237868-22912ecf-ab5c-4915-b5ac-021104b1b07b.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7871935374&itemId=24140639585&vendorItemId=88560434978&traceid=V0-143-0750aa43d1c37d6b&pt=0&slot=18",
-    "createdAt": "2026-09-10T03:05:49.947121+09:00"
+    "imageUrl": "https://img5c.coupangcdn.com/image/1025_amir_coupang_oct_80k/9573/2eae5112de1395e52c9bb804edc451ea1090ae39663b9f17b6a6b88c4cf7.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7380933475&itemId=26311652033&vendorItemId=85136091744&traceid=V0-143-2a84a7d93364e310&pt=0&slot=17",
+    "createdAt": "2026-09-10T04:04:03.922705+09:00"
   },
   {
     "id": "coupang_7504161723",
@@ -205,19 +194,19 @@
     "originalPrice": "",
     "discountRate": "",
     "imageUrl": "https://img4c.coupangcdn.com/image/retail/images/552773472779283-ae141622-24eb-4eec-9548-0f0c6c4540a9.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7504161723&itemId=19649119497&vendorItemId=86820137366&traceid=V0-143-fc9b87cbeb0e6609&pt=0&slot=19",
-    "createdAt": "2026-09-10T03:05:49.947125+09:00"
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7504161723&itemId=19649119497&vendorItemId=86820137366&traceid=V0-143-fc9b87cbeb0e6609&pt=0&slot=18",
+    "createdAt": "2026-09-10T04:04:03.922708+09:00"
   },
   {
-    "id": "coupang_2136428032",
+    "id": "coupang_7871935374",
     "source": "coupang",
-    "title": "이지덤 뷰티 스팟패치",
-    "price": "18,390원",
+    "title": "크린랩 플러스 크린장갑",
+    "price": "15,200원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image15.coupangcdn.com/image/1025_amir_coupang_oct_80k/26cb/7e6875339f5971ba45c03b150bc5ade70d03f55a55188e1a76a0b62af105.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=2136428032&itemId=14208419958&vendorItemId=70651487044&traceid=V0-143-210cab3ec1339a11&pt=0&slot=20",
-    "createdAt": "2026-09-10T03:05:49.947131+09:00"
+    "imageUrl": "https://image7.coupangcdn.com/image/retail/images/333615474237868-22912ecf-ab5c-4915-b5ac-021104b1b07b.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7871935374&itemId=24140639585&vendorItemId=88560434978&traceid=V0-143-0750aa43d1c37d6b&pt=0&slot=19",
+    "createdAt": "2026-09-10T04:04:03.922711+09:00"
   },
   {
     "id": "coupang_2378521821",
@@ -226,20 +215,20 @@
     "price": "10,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/vendor_inventory/13d3/5d4a592e8842fb0ce8503133023e090a359d360c9a7c234e2e1a1eea83a3.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=2378521821&itemId=4146476716&vendorItemId=72130376579&traceid=V0-143-3f793ece5e18878a&pt=0&slot=21",
-    "createdAt": "2026-09-10T03:05:49.947137+09:00"
+    "imageUrl": "https://image7.coupangcdn.com/image/vendor_inventory/13d3/5d4a592e8842fb0ce8503133023e090a359d360c9a7c234e2e1a1eea83a3.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=2378521821&itemId=4146476716&vendorItemId=72130376579&traceid=V0-143-3f793ece5e18878a&pt=0&slot=20",
+    "createdAt": "2026-09-10T04:04:03.922714+09:00"
   },
   {
-    "id": "coupang_10000000570065",
+    "id": "coupang_2136428032",
     "source": "coupang",
-    "title": "★스파온2인포함★디럭스 더블룸",
-    "price": "120,000원",
+    "title": "이지덤 뷰티 스팟패치",
+    "price": "18,390원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image1.coupangcdn.com/image/travel_reactor/travelSeller/resort/A00393141/d147b8c3-10d1-4fa5-ac5b-14cef8ef7308.jpg",
-    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000000570065&vendorItemId=70000287253255&itemId=20002214735333&traceid=V0-143-63ea83c94ae12c30&pt=0&slot=22",
-    "createdAt": "2026-09-10T03:05:49.947144+09:00"
+    "imageUrl": "https://image14.coupangcdn.com/image/1025_amir_coupang_oct_80k/26cb/7e6875339f5971ba45c03b150bc5ade70d03f55a55188e1a76a0b62af105.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=2136428032&itemId=14208419958&vendorItemId=70651487044&traceid=V0-143-210cab3ec1339a11&pt=0&slot=21",
+    "createdAt": "2026-09-10T04:04:03.922716+09:00"
   },
   {
     "id": "coupang_9560771395",
@@ -248,9 +237,20 @@
     "price": "19,300원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image13.coupangcdn.com/image/vendor_inventory/1d08/99df8a905803d475ac18651e24bb21628c672b972b1fbbe0659416b425ad.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9560771395&itemId=28530924707&vendorItemId=89359771494&traceid=V0-143-e06a22915fa5917b&pt=0&slot=23",
-    "createdAt": "2026-09-10T03:05:49.947148+09:00"
+    "imageUrl": "https://image12.coupangcdn.com/image/vendor_inventory/1d08/99df8a905803d475ac18651e24bb21628c672b972b1fbbe0659416b425ad.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9560771395&itemId=28530924707&vendorItemId=89359771494&traceid=V0-143-e06a22915fa5917b&pt=0&slot=22",
+    "createdAt": "2026-09-10T04:04:03.922720+09:00"
+  },
+  {
+    "id": "coupang_10000000570065",
+    "source": "coupang",
+    "title": "★스파온2인포함★디럭스 더블룸",
+    "price": "120,000원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://img5a.coupangcdn.com/image/travel_reactor/travelSeller/resort/A00393141/d147b8c3-10d1-4fa5-ac5b-14cef8ef7308.jpg",
+    "link": "https://link.coupang.com/re/AFFTDP?lptag=AF2056156&pageKey=10000000570065&vendorItemId=70000287253255&itemId=20002214735333&traceid=V0-143-63ea83c94ae12c30&pt=0&slot=23",
+    "createdAt": "2026-09-10T04:04:03.922724+09:00"
   },
   {
     "id": "coupang_8201134637",
@@ -259,19 +259,8 @@
     "price": "28,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img5c.coupangcdn.com/image/retail/images/254761880547090-935baa8d-c163-4be5-873f-275afcd2734f.png",
+    "imageUrl": "https://image1.coupangcdn.com/image/retail/images/254761880547090-935baa8d-c163-4be5-873f-275afcd2734f.png",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8201134637&itemId=25050391748&vendorItemId=92054849409&traceid=V0-143-28fc162afab75fd3&pt=0&slot=24",
-    "createdAt": "2026-09-10T03:05:49.947152+09:00"
-  },
-  {
-    "id": "coupang_8035053152",
-    "source": "coupang",
-    "title": "원하 삼성 칩셋 플리커프리 LED 정사각 심플 천장등",
-    "price": "11,900원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://img5c.coupangcdn.com/image/vendor_inventory/ff20/8759c4a45d037910da9fc88b403e1537cb51742611e162c595ea7285d7b9.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8035053152&itemId=22478407371&vendorItemId=70261046393&traceid=V0-143-c36341d342c70ac8&pt=0&slot=25",
-    "createdAt": "2026-09-10T03:05:49.947156+09:00"
+    "createdAt": "2026-09-10T04:04:03.922728+09:00"
   }
 ]
