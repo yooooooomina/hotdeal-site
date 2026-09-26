@@ -1,36 +1,25 @@
 [
   {
-    "id": "coupang_9618179154",
-    "source": "coupang",
-    "title": "바이아우어 티트리 프레쉬 청소년 샴푸",
-    "price": "17,800원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://img2c.coupangcdn.com/image/retail/images/2026/06/24/16/5/e1b1983b-9791-4086-bb8a-dc91440d45ee.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9618179154&itemId=28719789655&vendorItemId=95660303690&traceid=V0-143-4edddab0a8ca352f&pt=0&slot=1",
-    "createdAt": "2026-09-27T02:29:57.060167+09:00"
-  },
-  {
     "id": "coupang_9625284119",
     "source": "coupang",
     "title": "클린노트 부드러운 순면 일회용 페이스타올",
     "price": "6,300원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1a.coupangcdn.com/image/vendor_inventory/9468/d6da12320884d7652c81a427d6cb8434715276ca6d9cbfa1e5f6b596ec0d.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9625284119&itemId=28745299874&vendorItemId=95684445082&traceid=V0-143-8c40aa66b6b966ee&pt=0&slot=2",
-    "createdAt": "2026-09-27T02:29:57.060183+09:00"
+    "imageUrl": "https://image11.coupangcdn.com/image/vendor_inventory/9468/d6da12320884d7652c81a427d6cb8434715276ca6d9cbfa1e5f6b596ec0d.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9625284119&itemId=28745299874&vendorItemId=95684445082&traceid=V0-143-8c40aa66b6b966ee&pt=0&slot=1",
+    "createdAt": "2026-09-27T05:24:22.137236+09:00"
   },
   {
-    "id": "coupang_8464788459",
+    "id": "coupang_9618179154",
     "source": "coupang",
-    "title": "허브앤리빙 홈 디퓨저",
-    "price": "18,860원",
+    "title": "바이아우어 티트리 프레쉬 청소년 샴푸",
+    "price": "17,800원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/18839514319178-7b22c887-ba6f-41e5-b73b-eb90c7a8478f.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8464788459&itemId=24490724300&vendorItemId=92788092681&traceid=V0-143-7821373d8b1b75cf&pt=0&slot=3",
-    "createdAt": "2026-09-27T02:29:57.060189+09:00"
+    "imageUrl": "https://image15.coupangcdn.com/image/retail/images/2026/06/24/16/5/e1b1983b-9791-4086-bb8a-dc91440d45ee.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9618179154&itemId=28719789655&vendorItemId=95660303690&traceid=V0-143-4edddab0a8ca352f&pt=0&slot=2",
+    "createdAt": "2026-09-27T05:24:22.137249+09:00"
   },
   {
     "id": "coupang_312729338",
@@ -39,9 +28,9 @@
     "price": "12,930원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/retail/images/1745820927983147-8fc09e95-97e2-42ad-9525-97c1df393f5c.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=312729338&itemId=20835481700&vendorItemId=88374261792&traceid=V0-143-5a65410757a5a10b&pt=0&slot=4",
-    "createdAt": "2026-09-27T02:29:57.060193+09:00"
+    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/1745820927983147-8fc09e95-97e2-42ad-9525-97c1df393f5c.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=312729338&itemId=20835481700&vendorItemId=88374261792&traceid=V0-143-5a65410757a5a10b&pt=0&slot=3",
+    "createdAt": "2026-09-27T05:24:22.137252+09:00"
   },
   {
     "id": "coupang_9570580260",
@@ -50,9 +39,20 @@
     "price": "9,380원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1c.coupangcdn.com/image/vendor_inventory/d484/f45780297b7fce27a9eb14100c78c7f0cf40deb74378549687a4c489f75e.png",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9570580260&itemId=28564852689&vendorItemId=95509347772&traceid=V0-143-4903d2768f2d0a84&pt=0&slot=5",
-    "createdAt": "2026-09-27T02:29:57.060196+09:00"
+    "imageUrl": "https://img3c.coupangcdn.com/image/vendor_inventory/d484/f45780297b7fce27a9eb14100c78c7f0cf40deb74378549687a4c489f75e.png",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9570580260&itemId=28564852689&vendorItemId=95509347772&traceid=V0-143-4903d2768f2d0a84&pt=0&slot=4",
+    "createdAt": "2026-09-27T05:24:22.137255+09:00"
+  },
+  {
+    "id": "coupang_8464788459",
+    "source": "coupang",
+    "title": "허브앤리빙 홈 디퓨저",
+    "price": "18,860원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/18839514319178-7b22c887-ba6f-41e5-b73b-eb90c7a8478f.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8464788459&itemId=24490724300&vendorItemId=92788092681&traceid=V0-143-7821373d8b1b75cf&pt=0&slot=5",
+    "createdAt": "2026-09-27T05:24:22.137258+09:00"
   },
   {
     "id": "coupang_1258453121",
@@ -61,20 +61,9 @@
     "price": "11,700원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image6.coupangcdn.com/image/retail/images/154242433130335-a5b64d60-ea31-459d-8013-94f6a48ea479.jpg",
+    "imageUrl": "https://image9.coupangcdn.com/image/retail/images/154242433130335-a5b64d60-ea31-459d-8013-94f6a48ea479.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=1258453121&itemId=25558036482&vendorItemId=84656604794&traceid=V0-143-3400c9611604fa57&pt=0&slot=6",
-    "createdAt": "2026-09-27T02:29:57.060200+09:00"
-  },
-  {
-    "id": "coupang_8328623040",
-    "source": "coupang",
-    "title": "스타빈 남아용 마운틴 후드 바람막이",
-    "price": "26,800원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image2.coupangcdn.com/image/rs_quotation_api/8lusjukr/cd486c61c1124462a702dbb4b4fb83be.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8328623040&itemId=24044712247&vendorItemId=91064828170&traceid=V0-143-f0152b8d22d12659&pt=0&slot=7",
-    "createdAt": "2026-09-27T02:29:57.060204+09:00"
+    "createdAt": "2026-09-27T05:24:22.137261+09:00"
   },
   {
     "id": "coupang_9132127024",
@@ -83,9 +72,20 @@
     "price": "37,800원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image13.coupangcdn.com/image/retail/images/23172582525420-a66a301d-4717-4b4e-b9c7-bea39d41d82e.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9132127024&itemId=26872361857&vendorItemId=93287548513&traceid=V0-143-c90d1475f420f570&pt=0&slot=8",
-    "createdAt": "2026-09-27T02:29:57.060209+09:00"
+    "imageUrl": "https://img2c.coupangcdn.com/image/retail/images/23172582525420-a66a301d-4717-4b4e-b9c7-bea39d41d82e.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9132127024&itemId=26872361857&vendorItemId=93287548513&traceid=V0-143-c90d1475f420f570&pt=0&slot=7",
+    "createdAt": "2026-09-27T05:24:22.137263+09:00"
+  },
+  {
+    "id": "coupang_8328623040",
+    "source": "coupang",
+    "title": "스타빈 남아용 마운틴 후드 바람막이",
+    "price": "26,800원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image8.coupangcdn.com/image/rs_quotation_api/ioehxb2g/59f609cb6a404312b6a4dff53354f995.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8328623040&itemId=24044712256&vendorItemId=91064828211&traceid=V0-143-f0152b8d22d12659&pt=0&slot=8",
+    "createdAt": "2026-09-27T05:24:22.137268+09:00"
   },
   {
     "id": "coupang_538043",
@@ -94,9 +94,9 @@
     "price": "12,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image7.coupangcdn.com/image/retail/images/81427147476358-f9387dd9-435a-4532-a17e-99e996353df1.png",
+    "imageUrl": "https://img5a.coupangcdn.com/image/retail/images/81427147476358-f9387dd9-435a-4532-a17e-99e996353df1.png",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=538043&itemId=20934646414&vendorItemId=5218737748&traceid=V0-143-285a7f7a89dcd257&pt=0&slot=9",
-    "createdAt": "2026-09-27T02:29:57.060215+09:00"
+    "createdAt": "2026-09-27T05:24:22.137270+09:00"
   },
   {
     "id": "coupang_7320238380",
@@ -105,20 +105,9 @@
     "price": "9,790원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/1025_amir_coupang_oct_80k/567a/0fd981ae3a91b63923819c947a4c59cb5cee4d088fe0bddd394c91054732.jpg",
+    "imageUrl": "https://img4c.coupangcdn.com/image/1025_amir_coupang_oct_80k/567a/0fd981ae3a91b63923819c947a4c59cb5cee4d088fe0bddd394c91054732.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7320238380&itemId=18773350648&vendorItemId=85904915522&traceid=V0-143-406fc12fb1b4561f&pt=0&slot=10",
-    "createdAt": "2026-09-27T02:29:57.060218+09:00"
-  },
-  {
-    "id": "coupang_9557659294",
-    "source": "coupang",
-    "title": "프리티케어 로봇청소기 LDS 센서 지도 그리기 기능  물걸레 먼지비움",
-    "price": "233,910원",
-    "originalPrice": "",
-    "discountRate": "",
-    "imageUrl": "https://image8.coupangcdn.com/image/vendor_inventory/image_audit/advertiser/1783482043712/771936d2-0590-416a-914b-9072b8c582cd.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9557659294&itemId=28520043604&vendorItemId=94175997217&traceid=V0-143-dd4c14884c19bc4f&pt=0&slot=11",
-    "createdAt": "2026-09-27T02:29:57.060221+09:00"
+    "createdAt": "2026-09-27T05:24:22.137273+09:00"
   },
   {
     "id": "coupang_5171607790",
@@ -127,9 +116,9 @@
     "price": "9,990원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/retail/images/3747183542440177-ac3a87df-f481-4019-9c8f-7e0f397f9d2d.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=5171607790&itemId=7136239580&vendorItemId=74428002110&traceid=V0-143-f2b5eaf455359ecc&pt=0&slot=12",
-    "createdAt": "2026-09-27T02:29:57.060224+09:00"
+    "imageUrl": "https://image5.coupangcdn.com/image/retail/images/3747183542440177-ac3a87df-f481-4019-9c8f-7e0f397f9d2d.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=5171607790&itemId=7136239580&vendorItemId=74428002110&traceid=V0-143-f2b5eaf455359ecc&pt=0&slot=11",
+    "createdAt": "2026-09-27T05:24:22.137275+09:00"
   },
   {
     "id": "coupang_7641059686",
@@ -138,9 +127,20 @@
     "price": "74,900원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image2.coupangcdn.com/image/vendor_inventory/7680/b7a664fbb9be5376dd95b7ffcbbf9495a2664d1a87c857746f099ccdcd33.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7641059686&itemId=20303831210&vendorItemId=93219613422&traceid=V0-143-9f8990f3655ebe0e&pt=0&slot=13",
-    "createdAt": "2026-09-27T02:29:57.060227+09:00"
+    "imageUrl": "https://image12.coupangcdn.com/image/vendor_inventory/7680/b7a664fbb9be5376dd95b7ffcbbf9495a2664d1a87c857746f099ccdcd33.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7641059686&itemId=20303831210&vendorItemId=93219613422&traceid=V0-143-9f8990f3655ebe0e&pt=0&slot=12",
+    "createdAt": "2026-09-27T05:24:22.137277+09:00"
+  },
+  {
+    "id": "coupang_9557659294",
+    "source": "coupang",
+    "title": "프리티케어 로봇청소기 LDS 센서 지도 그리기 기능  물걸레 먼지비움",
+    "price": "233,910원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image6.coupangcdn.com/image/vendor_inventory/image_audit/advertiser/1783482043712/771936d2-0590-416a-914b-9072b8c582cd.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9557659294&itemId=28520043604&vendorItemId=94175997217&traceid=V0-143-dd4c14884c19bc4f&pt=0&slot=13",
+    "createdAt": "2026-09-27T05:24:22.137279+09:00"
   },
   {
     "id": "coupang_8255311671",
@@ -149,9 +149,9 @@
     "price": "9,020원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3c.coupangcdn.com/image/vendor_inventory/image_audit/stage/manual/7be946648322379668b3ade3688eb8eaf714bdee96309a40c7ea044d7a04_1756105256857.png",
+    "imageUrl": "https://img4a.coupangcdn.com/image/vendor_inventory/image_audit/stage/manual/7be946648322379668b3ade3688eb8eaf714bdee96309a40c7ea044d7a04_1756105256857.png",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8255311671&itemId=23506531708&vendorItemId=90532932619&traceid=V0-143-6ba91a95268cc386&pt=0&slot=14",
-    "createdAt": "2026-09-27T02:29:57.060230+09:00"
+    "createdAt": "2026-09-27T05:24:22.137283+09:00"
   },
   {
     "id": "coupang_9587437907",
@@ -160,9 +160,9 @@
     "price": "7,790원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://static.coupangcdn.com/image/retail/images/4900715161024-3abadb3d-dcd4-4874-a1da-2332a613f0bf.png",
+    "imageUrl": "https://image11.coupangcdn.com/image/retail/images/4900715161024-3abadb3d-dcd4-4874-a1da-2332a613f0bf.png",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9587437907&itemId=28619625498&vendorItemId=92993429966&traceid=V0-143-c5fecfc70eca0ce1&pt=0&slot=15",
-    "createdAt": "2026-09-27T02:29:57.060233+09:00"
+    "createdAt": "2026-09-27T05:24:22.137285+09:00"
   },
   {
     "id": "coupang_8448393285",
@@ -171,9 +171,9 @@
     "price": "11,990원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img3c.coupangcdn.com/image/retail/images/308771449938847-a8f58067-211a-46a2-b422-564d77d1d6d8.jpg",
+    "imageUrl": "https://image12.coupangcdn.com/image/retail/images/308771449938847-a8f58067-211a-46a2-b422-564d77d1d6d8.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8448393285&itemId=24440180545&vendorItemId=91454246272&traceid=V0-143-c7b24ee33783491e&pt=0&slot=16",
-    "createdAt": "2026-09-27T02:29:57.060239+09:00"
+    "createdAt": "2026-09-27T05:24:22.137288+09:00"
   },
   {
     "id": "coupang_9599477154",
@@ -182,9 +182,9 @@
     "price": "109,000원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image8.coupangcdn.com/image/retail/images/2026/06/12/11/0/e5b53950-4f35-4092-8235-0075845181d7.jpg",
+    "imageUrl": "https://img4a.coupangcdn.com/image/retail/images/2026/06/12/11/0/e5b53950-4f35-4092-8235-0075845181d7.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9599477154&itemId=28656880361&vendorItemId=95599165298&traceid=V0-143-7c8ca8a34636d27b&pt=0&slot=17",
-    "createdAt": "2026-09-27T02:29:57.060242+09:00"
+    "createdAt": "2026-09-27T05:24:22.137290+09:00"
   },
   {
     "id": "coupang_7278837071",
@@ -193,9 +193,9 @@
     "price": "55,500원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image5.coupangcdn.com/image/retail/images/13977558268929-ccb1dcf2-330d-4552-bd11-b9e734e6dfdf.jpg",
+    "imageUrl": "https://static.coupangcdn.com/image/retail/images/13977558268929-ccb1dcf2-330d-4552-bd11-b9e734e6dfdf.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=7278837071&itemId=27839740031&vendorItemId=83069084279&traceid=V0-143-3633a1f072fe2e73&pt=0&slot=18",
-    "createdAt": "2026-09-27T02:29:57.060245+09:00"
+    "createdAt": "2026-09-27T05:24:22.137293+09:00"
   },
   {
     "id": "coupang_9546002251",
@@ -204,9 +204,9 @@
     "price": "16,870원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image9.coupangcdn.com/image/retail/images/239250966564741-dbbe02c4-b92d-4386-bb02-5889844a81fa.jpg",
-    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9546002251&itemId=28479083566&vendorItemId=95429259229&traceid=V0-143-c97a21862a9c2cfb&pt=0&slot=19",
-    "createdAt": "2026-09-27T02:29:57.060248+09:00"
+    "imageUrl": "https://img5a.coupangcdn.com/image/retail/images/275095879618603-8a3ca897-88fa-41dc-88dc-f8d6d971b281.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9546002251&itemId=28479083578&vendorItemId=95429259232&traceid=V0-143-c97a21862a9c2cfb&pt=0&slot=19",
+    "createdAt": "2026-09-27T05:24:22.137295+09:00"
   },
   {
     "id": "coupang_9238855064",
@@ -215,9 +215,9 @@
     "price": "10,800원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image14.coupangcdn.com/image/retail/images/93640918574944-5a0fcb46-ee00-4846-b7a0-d408609f0400.jpg",
+    "imageUrl": "https://image5.coupangcdn.com/image/retail/images/93640918574944-5a0fcb46-ee00-4846-b7a0-d408609f0400.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9238855064&itemId=27317787078&vendorItemId=94808892599&traceid=V0-143-13a311b1359ec2e2&pt=0&slot=20",
-    "createdAt": "2026-09-27T02:29:57.060251+09:00"
+    "createdAt": "2026-09-27T05:24:22.137297+09:00"
   },
   {
     "id": "coupang_8990198850",
@@ -226,9 +226,9 @@
     "price": "7,990원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://image5.coupangcdn.com/image/rs_quotation_api/lano5xas/bff458b641a64ba2846f31697154fa92.jpg",
+    "imageUrl": "https://image11.coupangcdn.com/image/rs_quotation_api/lano5xas/bff458b641a64ba2846f31697154fa92.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=8990198850&itemId=26333585134&vendorItemId=93310788221&traceid=V0-143-05ed819192fbdadb&pt=0&slot=21",
-    "createdAt": "2026-09-27T02:29:57.060254+09:00"
+    "createdAt": "2026-09-27T05:24:22.137301+09:00"
   },
   {
     "id": "coupang_6122157152",
@@ -237,8 +237,19 @@
     "price": "17,200원",
     "originalPrice": "",
     "discountRate": "",
-    "imageUrl": "https://img1c.coupangcdn.com/image/vendor_inventory/0fff/2a53d6a59552b13e8b65a68fc64065485a6f11d591f4c39da55b84d01bbb.jpg",
+    "imageUrl": "https://img3c.coupangcdn.com/image/vendor_inventory/0fff/2a53d6a59552b13e8b65a68fc64065485a6f11d591f4c39da55b84d01bbb.jpg",
     "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=6122157152&itemId=16937512151&vendorItemId=84115118801&traceid=V0-143-51f8b8630ab67c7e&pt=0&slot=22",
-    "createdAt": "2026-09-27T02:29:57.060259+09:00"
+    "createdAt": "2026-09-27T05:24:22.137303+09:00"
+  },
+  {
+    "id": "coupang_9556031178",
+    "source": "coupang",
+    "title": "스프라이트 제로 사이다 with TEA",
+    "price": "14,900원",
+    "originalPrice": "",
+    "discountRate": "",
+    "imageUrl": "https://image3.coupangcdn.com/image/retail/images/2026/05/19/18/1/b5de012e-d332-49ab-9be4-5e6b00896427.jpg",
+    "link": "https://link.coupang.com/re/AFFSDP?lptag=AF2056156&pageKey=9556031178&itemId=28514313168&vendorItemId=95462859492&traceid=V0-143-793be3601ccf926c&pt=0&slot=23",
+    "createdAt": "2026-09-27T05:24:22.137305+09:00"
   }
 ]
